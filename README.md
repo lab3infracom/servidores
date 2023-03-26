@@ -24,11 +24,3 @@
     java ClientePrincipal
     12.1. Se eligen en numero de conexiones simultaneas.
 
-
-
-
-## Codigo para correr el servidor
-java -Xmx3g ServidorTCP
-## CODIGO PARA crear los archivos basura
-dd if=/dev/zero of=archivo_100Mb.txt bs=1M count=100
-dd if=/dev/zero of=archivo_250Mb.txt bs=1M count=250
