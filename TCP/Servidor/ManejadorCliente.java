@@ -13,30 +13,21 @@ import java.security.*;
 public class ManejadorCliente implements Runnable {
     private Socket clienteSocket;
     private int numarchivo;
-    private static final Logger logger = Logger.getLogger("GeneradorLog");
+    private int conexiones;
+    private Buffer mibuffer;
+    private static Logger logger;
 
-    public ManejadorCliente(Socket clienteSocket, int archivo) {
+    public ManejadorCliente(Socket clienteSocket, int archivo,  Buffer mibuffer, int conexiones, Logger logger) {
         this.clienteSocket = clienteSocket;
         this.numarchivo = archivo;
+        this.conexiones = conexiones;
+        this.mibuffer = mibuffer;
+        this.logger = logger;
     }
 
     public void run() {
         try {
             long tiempoInicio = System.currentTimeMillis();
-            // Obtener el anio actual
-            int anioActual = LocalDate.now().getYear();
-            // Obtener el mes actual
-            int mesActual = LocalDate.now().getMonthValue();
-            // Obtener el dia actual
-            int diaActual = LocalDate.now().getDayOfMonth();
-            // Obtener la hora actual
-            int horaActual = LocalTime.now().getHour();
-            // Obtener el minuto actual
-            int minutoActual = LocalTime.now().getMinute();
-            // Obtener el segundo actual
-            int segundoActual = LocalTime.now().getSecond();
-            FileHandler fh = new FileHandler("Logs/"+anioActual+"-"+mesActual+"-"+diaActual+"-"+horaActual+"-"+minutoActual+"-"+segundoActual+"-log.log");
-            logger.addHandler(fh);
             logger.info("---IDENTIFICADOR DEL CLIENTE: " + this.clienteSocket+"---");
             logger.info("Conexión establecida con el servidor " + clienteSocket.getInetAddress().getHostAddress() + ":" + clienteSocket.getPort());
             File archivo = new File("archivo_100Mb.txt");
@@ -55,6 +46,7 @@ public class ManejadorCliente implements Runnable {
             try (FileInputStream fis = new FileInputStream(archivo)) {
                 fis.read(buffer);
                 md.update(buffer, 0, (int) archivo.length());
+                logger.info("--TAMAÑO ARCHIVO: "+archivo.length()+" bytes--");
             } catch (IOException e) {
                 System.out.println("Error al leer el archivo: " + e.getMessage());
                 logger.info("--NO TUVO EXITO LA CONEXION--");
@@ -65,6 +57,10 @@ public class ManejadorCliente implements Runnable {
                 DataOutputStream dos = new DataOutputStream(clienteSocket.getOutputStream());
                 DataInputStream dis = new DataInputStream(clienteSocket.getInputStream());
                 String mensajeConfirmacion = dis.readUTF();
+                mibuffer.aumentar();
+                while(mibuffer.dar()<conexiones){
+                    Thread.yield();
+                }
                 dos.writeInt(buffer.length);
                 dos.write(buffer);
                 dos.flush();
@@ -84,8 +80,7 @@ public class ManejadorCliente implements Runnable {
                 System.out.println("Error al enviar el archivo: " + e.getMessage());
                 logger.info("--NO TUVO EXITO LA CONEXION--");
             }
-            fh.close();
-        } catch (IOException | NoSuchAlgorithmException e) {
+        } catch (Exception e) {
             System.out.println("Error al enviar el archivo: " + e.getMessage());
             logger.info("--NO TUVO EXITO LA CONEXION--");
         } 

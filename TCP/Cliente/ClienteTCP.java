@@ -14,22 +14,15 @@ public class ClienteTCP extends Thread{
     private static final int PUERTO = 43215; // el puerto del servidor
     private int id;
     private int numclientes;
-    private static final Logger LOGGER = Logger.getLogger("Generar Log");
-    public ClienteTCP(int id, int numclientes) {
+    private static Logger LOGGER;
+    public ClienteTCP(int id, int numclientes, Logger logger) {
         this.id = id;
         this.numclientes = numclientes;
+        this.LOGGER = logger;
     }
     public void run() {
         try {
             long tiempoInicio = System.currentTimeMillis();
-            int anioActual = LocalDate.now().getYear();
-            int mesActual = LocalDate.now().getMonthValue();
-            int diaActual = LocalDate.now().getDayOfMonth();
-            int horaActual = LocalTime.now().getHour();
-            int minutoActual = LocalTime.now().getMinute();
-            int segundoActual = LocalTime.now().getSecond();
-            FileHandler fh = new FileHandler("Logs/"+anioActual+"-"+mesActual+"-"+diaActual+"-"+horaActual+"-"+minutoActual+"-"+segundoActual+"-log.log");
-            LOGGER.addHandler(fh);
             Socket clienteSocket = new Socket(IP_SERVIDOR, PUERTO);
             LOGGER.info("Conexión establecida con el servidor " + IP_SERVIDOR + ":" + PUERTO);
             LOGGER.info("IDENTIFICACION DEL CLIENTE " + clienteSocket);

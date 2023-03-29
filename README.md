@@ -3,9 +3,10 @@
 ### Servidor TCP
 0. Se necesita descargar en la maquina virtual el paquete de java con la instruccion:
     sudo apt-get install default-jdk
-1. Para poder correr el servidor TCP se hace necesaria la transliteracion de todo el codigo de los archivos ManejadorCliente.java y ServidorTCP.java a archivos homonimos en la maquina virtual ubuntu server 20.04.
-2. Tambien hace falta la creacion de una carpeta Logs dentro de la misma carpeta donde se crearon los archivos ManejadorCliente.java y ServidorTCP.java.
-3. Se necesita configurar la maquina virtual en NAT.
+1. Asegurese de que la maquina virtual tenga como minimo 2gb de ram, de no ser así configurele con los botones de VM Ware
+2. Para poder correr el servidor TCP se hace necesaria la transliteracion de todo el codigo de los archivos ManejadorCliente.java y ServidorTCP.java a archivos homonimos en la maquina virtual ubuntu server 20.04.
+3. Tambien hace falta la creacion de una carpeta Logs dentro de la misma carpeta donde se crearon los archivos ManejadorCliente.java y ServidorTCP.java.
+4. Se necesita configurar la maquina virtual en NAT.
 5. Se hace "ifconfig" para saber la IP del servidor
 ### Cliente TCP
 6. Se copian los archivos dentro de la maquina cliente.
