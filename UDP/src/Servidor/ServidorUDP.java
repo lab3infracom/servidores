@@ -16,8 +16,8 @@ public class ServidorUDP {
     // Puerto para la conexion
     private static final int PUERTO = 43215;
 
-    // Tamanio de un chunk (64KB)
-    private static final int TAMANIO_CHUNK = 32768;
+    // Tamanio de un chunk (62KB)
+    private static final int TAMANIO_CHUNK = 63488;
 
     // Numero maximo de conexiones concurrentes
     // private static final int MAXIMO_CONEXIONES = 25;
