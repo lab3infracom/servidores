@@ -67,7 +67,6 @@ public class ServidorUDP {
             serverSocket.receive(paqueteRecibido);
             InetAddress ipCliente = paqueteRecibido.getAddress();
             int puertoCliente = paqueteRecibido.getPort();
-            LOGGER.info("Conexion recibida de " + ipCliente + ":" + puertoCliente);
             
             // Se obtiene el archivo solicitado por el cliente
             File archivo;
