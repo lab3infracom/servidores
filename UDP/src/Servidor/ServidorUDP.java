@@ -1,19 +1,16 @@
-package Servidor;
-
 import java.io.File;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
+import java.util.logging.FileHandler;
+import java.util.logging.Logger;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Scanner;
-import java.util.logging.FileHandler;
-import java.util.logging.Logger;
 
-// TODO - Revisar maximo 25 conexiones concurrentes
+
 public class ServidorUDP {
-    
     /************************************************* CONSTANTES ***********************************************/
 
     // Puerto para la conexion
@@ -86,4 +83,5 @@ public class ServidorUDP {
             
         }
     }
+
 }
