@@ -1,4 +1,4 @@
-package UDP.Servidor;
+package Servidor;
 
 import java.io.File;
 import java.io.FileInputStream;

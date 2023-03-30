@@ -1,4 +1,4 @@
-package UDP.Servidor;
+package Servidor;
 
 import java.io.File;
 import java.io.IOException;
@@ -26,7 +26,7 @@ public class ServidorUDP {
     // private static final int MAXIMO_CONEXIONES = 25;
 
     // Directorio donde se encuentran los archivos del servidor
-    private static final String DIRECTORIO_ARCHIVOS = "files/";
+    private static final String DIRECTORIO_ARCHIVOS = "./src/Servidor/";
 
     // Logger
     private static final Logger LOGGER=Logger.getLogger("GENERAR LOG");
@@ -35,7 +35,7 @@ public class ServidorUDP {
     
     public static void main(String[] args) throws IOException {
 
-        // Se crea el log
+        // Generar log
         int anio = LocalDate.now().getYear();
         int mes = LocalDate.now().getMonthValue();
         int dia = LocalDate.now().getDayOfMonth();
@@ -44,7 +44,6 @@ public class ServidorUDP {
         int segundo = LocalTime.now().getSecond();
         FileHandler fh = new FileHandler(DIRECTORIO_ARCHIVOS + "Logs/"+anio+"-"+mes+"-"+dia+"-"+hora+"-"+minuto+"-"+segundo+"-log.log");
         LOGGER.addHandler(fh);
-
         // Se obtiene el nombre del archivo que se va a transmitir
         System.out.println("--------------------------------------------------");
         System.out.println("ESCOJA EL ARCHIVO QUE QUIERE TRANSMITIR");
@@ -72,9 +71,6 @@ public class ServidorUDP {
             InetAddress ipCliente = paqueteRecibido.getAddress();
             int puertoCliente = paqueteRecibido.getPort();
             LOGGER.info("Conexion recibida de " + ipCliente + ":" + puertoCliente);
-            
-            // Obtener el numero de clientes concurrentes
-            // int numClientesConcurrentes = Integer.valueOf(new String(paqueteRecibido.getData(), 0, paqueteRecibido.getLength()));
             
             // Se obtiene el archivo solicitado por el cliente
             File archivo;
