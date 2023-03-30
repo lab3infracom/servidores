@@ -17,11 +17,11 @@ public class ClienteUDP extends Thread {
     // Puerto para la conexion
     private static final int PUERTO = 43215;
 
-    // Tamanio de un chunk
-    private static final int TAMANIO_CHUNK = 1024;
+    // Tamanio de un chunk (62KB)
+    private static final int TAMANIO_CHUNK = 63488;
 
     // TODO: IP del servidor
-    private static final String IP_SERVIDOR = "192.168.20.28";
+    private static final String IP_SERVIDOR = "192.168.5.119";
 
     /************************************************* CONSTANTES ***********************************************/
 
@@ -43,7 +43,7 @@ public class ClienteUDP extends Thread {
 
     @Override
     public void run() {
-
+        System.out.println("Cliente " + this.ID + " iniciado");
         // Crear socket UDP y enviar solicitud de conexión al servidor
         DatagramSocket clientSocket;
         try {
@@ -53,16 +53,24 @@ public class ClienteUDP extends Thread {
             InetAddress direcServidor = InetAddress.getByName(IP_SERVIDOR);
             DatagramPacket connectPacket = new DatagramPacket(datosConexion, datosConexion.length, direcServidor, PUERTO);
             clientSocket.send(connectPacket);
+            System.out.println(this.ID + "-Paquete de conexion enviado al servidor: " + connectPacket.getAddress() + ":" + connectPacket.getPort());
 
             // Se crea el archivo para almacenar la respuesta del servidor
             FileOutputStream outputFile = new FileOutputStream(this.RUTA);
             byte[] buffer = new byte[TAMANIO_CHUNK];
             DatagramPacket paqueteRecibido = new DatagramPacket(buffer, buffer.length);
             // Recibir respuesta del servidor
+            int contador = 1;
             while (true) {
+                System.out.println(this.ID + "-Esperando paquete del servidor...");
                 clientSocket.receive(paqueteRecibido);
+                System.out.println(this.ID + "-Recibido paquete " + contador + " del servidor...");
                 outputFile.write(paqueteRecibido.getData(), 0, paqueteRecibido.getLength());
+                // System.out.println(paqueteRecibido.getLength() + " bytes recibidos, " + buffer.length + " bytes esperados");
+                contador++;
                 if (paqueteRecibido.getLength() < buffer.length) {
+                    // Si el paquete recibido es más corto que el búfer, significa que se ha alcanzado el final del archivo
+                    System.out.println(this.ID + "-No hay mas datos que recibir");
                     break;
                 }
             }
@@ -70,6 +78,7 @@ public class ClienteUDP extends Thread {
             // Cerrar el archivo de salida y el socket
             outputFile.close();
             clientSocket.close();
+            System.out.println(this.ID + "-FIN");
 
 
         } catch (IOException e) {
