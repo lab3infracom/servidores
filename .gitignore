@@ -1,0 +1,4 @@
+Logs/*
+/UDP/bin/*
+*.txt
+*.log
