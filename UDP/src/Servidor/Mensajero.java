@@ -54,9 +54,13 @@ public class Mensajero extends Thread {
 
             // Se inicia el envio del archivo
             long inicio = System.currentTimeMillis();
+            int contador = 0;
             while ((bytesLeidos = fileInputStream.read(datosEnviados)) != -1) {
                 DatagramPacket paqueteEnviado = new DatagramPacket(datosEnviados, bytesLeidos, IP_CLIENTE, PUERTO_CLIENTE);
                 SERVER_SOCKET.send(paqueteEnviado);
+                if(contador%100 == 0)
+                    LOGGER.info(contador + " DATAGRAMAS ENVIADOS");
+                contador++;
             }
             fileInputStream.close();
 
