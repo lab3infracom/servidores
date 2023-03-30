@@ -12,7 +12,7 @@ public class ClienteUDP extends Thread {
     /************************************************* CONSTANTES ***********************************************/
 
     // Directorio donde se encuentran los archivos del servidor
-    private static final String DIRECTORIO_ARCHIVOS = "UDP/Servidor/";
+    private static final String DIRECTORIO_ARCHIVOS = "./src/Cliente/";
 
     // Puerto para la conexion
     private static final int PUERTO = 43215;
@@ -21,7 +21,7 @@ public class ClienteUDP extends Thread {
     private static final int TAMANIO_CHUNK = 1024;
 
     // TODO: IP del servidor
-    private static final String IP_SERVIDOR = "192.168.5.116";
+    private static final String IP_SERVIDOR = "192.168.20.28";
 
     /************************************************* CONSTANTES ***********************************************/
 
