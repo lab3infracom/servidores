@@ -23,7 +23,7 @@ public class ServidorUDP {
     // private static final int MAXIMO_CONEXIONES = 25;
 
     // Directorio donde se encuentran los archivos del servidor
-    private static final String DIRECTORIO_ARCHIVOS = "./src/Servidor/";
+    private static final String DIRECTORIO_ARCHIVOS = "./";
 
     // Logger
     private static final Logger LOGGER=Logger.getLogger("GENERAR LOG");
