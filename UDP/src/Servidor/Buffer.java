@@ -6,7 +6,11 @@ public class Buffer {
         
         while (numClientes==25)
         {
-            wait();
+            try {
+                wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
 
         numClientes++;
