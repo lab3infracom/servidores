@@ -1,25 +1,19 @@
+import java.util.concurrent.Semaphore;
+
 public class Buffer {
 
-    private static int numClientes=0;
+    private final Semaphore semaphore;
 
-    public synchronized void aumentar(){
-        
-        while (numClientes==25)
-        {
-            try {
-                wait();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-
-        numClientes++;
-        notify();
+    public Buffer() {
+        semaphore = new Semaphore(25);
     }
 
-    public synchronized void disminuir(){
+    public void adquirir() throws InterruptedException {
+        semaphore.acquire();
+    }
 
-        numClientes--;
-        notify();
+    public void liberar() {
+        semaphore.release();
     }
 }
+

@@ -7,11 +7,9 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 
-// TODO - Revisar maximo 25 conexiones concurrentes
 public class Mensajero extends Thread {
     
     /************************************************* CONSTANTES ***********************************************/
-
 
     // Buffer
     private final Buffer buffer;
@@ -59,10 +57,8 @@ public class Mensajero extends Thread {
     @Override
     public void run() {
         try {
-
-            // Se agrega un cliente al buffer
-            try { sleep(500); } catch (Exception e) {}
-            buffer.aumentar();
+            // Se adquiere un permiso del buffer
+            buffer.adquirir();
 
             LOGGER.info("CONEXION RECIBIDA de " + IP_CLIENTE + ":" + PUERTO_CLIENTE);
             
@@ -90,10 +86,10 @@ public class Mensajero extends Thread {
             LOGGER.info("ARCHIVO ENVIADO: " + ARCHIVO.getName() + " (" + Long.toString(ARCHIVO.length()) + " bytes)");
             LOGGER.info("TIEMPO TOTAL DE CONEXION (" + IP_CLIENTE + ":" + PUERTO_CLIENTE + "): "+ tiempo +" milisegundos");
 
-            // Se elimina un cliente del buffer
-            buffer.disminuir();
+            // Se libera el permiso del buffer
+            buffer.liberar();
 
-        } catch (IOException e) {
+        } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
     }
