@@ -81,7 +81,7 @@ public class ServidorUDP {
             }
 
             // Se crea el Thread que se encarga de enviar el archivo al cliente
-            Mensajero mensajero = new Mensajero(archivo, TAMANIO_CHUNK, ipCliente, puertoCliente, serverSocket, LOGGER);
+            Mensajero mensajero = new Mensajero(colaServidor, archivo, TAMANIO_CHUNK, ipCliente, puertoCliente, serverSocket, LOGGER);
             mensajero.start();
             
         }
