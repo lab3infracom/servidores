@@ -1,0 +1,1168 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2023-03-31T19:45:11.530434Z</date>
+  <millis>1680291911530</millis>
+  <nanos>434000</nanos>
+  <sequence>22</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>23</thread>
+  <message>CONEXION RECIBIDA de /192.168.20.28:60306</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:11.528481Z</date>
+  <millis>1680291911528</millis>
+  <nanos>481000</nanos>
+  <sequence>4</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>12</thread>
+  <message>CONEXION RECIBIDA de /192.168.20.28:60312</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:11.528449Z</date>
+  <millis>1680291911528</millis>
+  <nanos>449000</nanos>
+  <sequence>3</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>CONEXION RECIBIDA de /192.168.20.28:60291</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:11.525478Z</date>
+  <millis>1680291911525</millis>
+  <nanos>478000</nanos>
+  <sequence>1</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>24</thread>
+  <message>CONEXION RECIBIDA de /192.168.20.28:60307</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:11.525304Z</date>
+  <millis>1680291911525</millis>
+  <nanos>304000</nanos>
+  <sequence>0</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>19</thread>
+  <message>CONEXION RECIBIDA de /192.168.20.28:60284</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:11.530546Z</date>
+  <millis>1680291911530</millis>
+  <nanos>546000</nanos>
+  <sequence>23</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>28</thread>
+  <message>CONEXION RECIBIDA de /192.168.20.28:60295</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:11.528890Z</date>
+  <millis>1680291911528</millis>
+  <nanos>890000</nanos>
+  <sequence>9</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>27</thread>
+  <message>CONEXION RECIBIDA de /192.168.20.28:60294</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:11.530269Z</date>
+  <millis>1680291911530</millis>
+  <nanos>269000</nanos>
+  <sequence>21</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>29</thread>
+  <message>CONEXION RECIBIDA de /192.168.20.28:60309</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:11.530138Z</date>
+  <millis>1680291911530</millis>
+  <nanos>138000</nanos>
+  <sequence>20</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>30</thread>
+  <message>CONEXION RECIBIDA de /192.168.20.28:60310</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:11.529996Z</date>
+  <millis>1680291911529</millis>
+  <nanos>996000</nanos>
+  <sequence>19</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>22</thread>
+  <message>CONEXION RECIBIDA de /192.168.20.28:60289</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:11.529857Z</date>
+  <millis>1680291911529</millis>
+  <nanos>857000</nanos>
+  <sequence>18</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>32</thread>
+  <message>CONEXION RECIBIDA de /192.168.20.28:60290</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:11.529670Z</date>
+  <millis>1680291911529</millis>
+  <nanos>670000</nanos>
+  <sequence>17</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>31</thread>
+  <message>CONEXION RECIBIDA de /192.168.20.28:60311</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:11.529563Z</date>
+  <millis>1680291911529</millis>
+  <nanos>563000</nanos>
+  <sequence>16</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>34</thread>
+  <message>CONEXION RECIBIDA de /192.168.20.28:60303</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:11.529418Z</date>
+  <millis>1680291911529</millis>
+  <nanos>418000</nanos>
+  <sequence>15</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>36</thread>
+  <message>CONEXION RECIBIDA de /192.168.20.28:60299</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:11.529247Z</date>
+  <millis>1680291911529</millis>
+  <nanos>247000</nanos>
+  <sequence>14</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>37</thread>
+  <message>CONEXION RECIBIDA de /192.168.20.28:60304</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:11.529123Z</date>
+  <millis>1680291911529</millis>
+  <nanos>123000</nanos>
+  <sequence>13</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>18</thread>
+  <message>CONEXION RECIBIDA de /192.168.20.28:60292</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:11.529013Z</date>
+  <millis>1680291911529</millis>
+  <nanos>13000</nanos>
+  <sequence>12</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>25</thread>
+  <message>CONEXION RECIBIDA de /192.168.20.28:60282</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:11.528999Z</date>
+  <millis>1680291911528</millis>
+  <nanos>999000</nanos>
+  <sequence>11</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>15</thread>
+  <message>CONEXION RECIBIDA de /192.168.20.28:60286</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:11.528891Z</date>
+  <millis>1680291911528</millis>
+  <nanos>891000</nanos>
+  <sequence>10</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>20</thread>
+  <message>CONEXION RECIBIDA de /192.168.20.28:60283</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:11.528810Z</date>
+  <millis>1680291911528</millis>
+  <nanos>810000</nanos>
+  <sequence>8</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>17</thread>
+  <message>CONEXION RECIBIDA de /192.168.20.28:60280</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:11.528788Z</date>
+  <millis>1680291911528</millis>
+  <nanos>788000</nanos>
+  <sequence>7</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>21</thread>
+  <message>CONEXION RECIBIDA de /192.168.20.28:60288</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:11.528696Z</date>
+  <millis>1680291911528</millis>
+  <nanos>696000</nanos>
+  <sequence>6</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>26</thread>
+  <message>CONEXION RECIBIDA de /192.168.20.28:60308</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:11.528682Z</date>
+  <millis>1680291911528</millis>
+  <nanos>682000</nanos>
+  <sequence>5</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>16</thread>
+  <message>CONEXION RECIBIDA de /192.168.20.28:60285</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:11.525581Z</date>
+  <millis>1680291911525</millis>
+  <nanos>581000</nanos>
+  <sequence>2</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>14</thread>
+  <message>CONEXION RECIBIDA de /192.168.20.28:60287</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:11.532185Z</date>
+  <millis>1680291911532</millis>
+  <nanos>185000</nanos>
+  <sequence>24</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>33</thread>
+  <message>CONEXION RECIBIDA de /192.168.20.28:60296</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:42.625923Z</date>
+  <millis>1680291942625</millis>
+  <nanos>923000</nanos>
+  <sequence>25</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>26</thread>
+  <message>ARCHIVO ENVIADO: archivo_100Mb.txt (104857600 bytes)</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:42.767724Z</date>
+  <millis>1680291942767</millis>
+  <nanos>724000</nanos>
+  <sequence>26</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>27</thread>
+  <message>ARCHIVO ENVIADO: archivo_100Mb.txt (104857600 bytes)</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:42.869721Z</date>
+  <millis>1680291942869</millis>
+  <nanos>721000</nanos>
+  <sequence>27</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>27</thread>
+  <message>TIEMPO TOTAL DE CONEXION (/192.168.20.28:60294): 31099 milisegundos</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:42.873074Z</date>
+  <millis>1680291942873</millis>
+  <nanos>74000</nanos>
+  <sequence>28</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>35</thread>
+  <message>CONEXION RECIBIDA de /192.168.20.28:60300</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:42.977498Z</date>
+  <millis>1680291942977</millis>
+  <nanos>498000</nanos>
+  <sequence>29</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>26</thread>
+  <message>TIEMPO TOTAL DE CONEXION (/192.168.20.28:60308): 30765 milisegundos</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:43.058155Z</date>
+  <millis>1680291943058</millis>
+  <nanos>155000</nanos>
+  <sequence>30</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>38</thread>
+  <message>CONEXION RECIBIDA de /192.168.20.28:60305</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:43.343338Z</date>
+  <millis>1680291943343</millis>
+  <nanos>338000</nanos>
+  <sequence>31</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>29</thread>
+  <message>ARCHIVO ENVIADO: archivo_100Mb.txt (104857600 bytes)</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:43.350527Z</date>
+  <millis>1680291943350</millis>
+  <nanos>527000</nanos>
+  <sequence>32</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>29</thread>
+  <message>TIEMPO TOTAL DE CONEXION (/192.168.20.28:60309): 31681 milisegundos</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:43.373234Z</date>
+  <millis>1680291943373</millis>
+  <nanos>234000</nanos>
+  <sequence>33</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>39</thread>
+  <message>CONEXION RECIBIDA de /192.168.20.28:60298</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:43.659711Z</date>
+  <millis>1680291943659</millis>
+  <nanos>711000</nanos>
+  <sequence>34</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>24</thread>
+  <message>ARCHIVO ENVIADO: archivo_100Mb.txt (104857600 bytes)</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:43.757801Z</date>
+  <millis>1680291943757</millis>
+  <nanos>801000</nanos>
+  <sequence>35</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>24</thread>
+  <message>TIEMPO TOTAL DE CONEXION (/192.168.20.28:60307): 31931 milisegundos</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:43.801350Z</date>
+  <millis>1680291943801</millis>
+  <nanos>350000</nanos>
+  <sequence>36</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>41</thread>
+  <message>CONEXION RECIBIDA de /192.168.20.28:60297</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:43.972435Z</date>
+  <millis>1680291943972</millis>
+  <nanos>435000</nanos>
+  <sequence>37</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>20</thread>
+  <message>ARCHIVO ENVIADO: archivo_100Mb.txt (104857600 bytes)</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:43.992733Z</date>
+  <millis>1680291943992</millis>
+  <nanos>733000</nanos>
+  <sequence>38</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>20</thread>
+  <message>TIEMPO TOTAL DE CONEXION (/192.168.20.28:60283): 32347 milisegundos</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:44.014153Z</date>
+  <millis>1680291944014</millis>
+  <nanos>153000</nanos>
+  <sequence>39</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>40</thread>
+  <message>CONEXION RECIBIDA de /192.168.20.28:60281</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:44.131182Z</date>
+  <millis>1680291944131</millis>
+  <nanos>182000</nanos>
+  <sequence>40</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>23</thread>
+  <message>ARCHIVO ENVIADO: archivo_100Mb.txt (104857600 bytes)</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:44.166294Z</date>
+  <millis>1680291944166</millis>
+  <nanos>294000</nanos>
+  <sequence>41</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>23</thread>
+  <message>TIEMPO TOTAL DE CONEXION (/192.168.20.28:60306): 32528 milisegundos</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:44.168990Z</date>
+  <millis>1680291944168</millis>
+  <nanos>990000</nanos>
+  <sequence>42</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>37</thread>
+  <message>ARCHIVO ENVIADO: archivo_100Mb.txt (104857600 bytes)</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:44.173641Z</date>
+  <millis>1680291944173</millis>
+  <nanos>641000</nanos>
+  <sequence>43</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>14</thread>
+  <message>ARCHIVO ENVIADO: archivo_100Mb.txt (104857600 bytes)</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:44.210616Z</date>
+  <millis>1680291944210</millis>
+  <nanos>616000</nanos>
+  <sequence>44</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>37</thread>
+  <message>TIEMPO TOTAL DE CONEXION (/192.168.20.28:60304): 32528 milisegundos</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:44.232296Z</date>
+  <millis>1680291944232</millis>
+  <nanos>296000</nanos>
+  <sequence>45</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>14</thread>
+  <message>TIEMPO TOTAL DE CONEXION (/192.168.20.28:60287): 32561 milisegundos</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:44.233907Z</date>
+  <millis>1680291944233</millis>
+  <nanos>907000</nanos>
+  <sequence>46</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>42</thread>
+  <message>CONEXION RECIBIDA de /192.168.20.28:60302</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:44.236842Z</date>
+  <millis>1680291944236</millis>
+  <nanos>842000</nanos>
+  <sequence>47</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>13</thread>
+  <message>CONEXION RECIBIDA de /192.168.20.28:60301</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:44.237153Z</date>
+  <millis>1680291944237</millis>
+  <nanos>153000</nanos>
+  <sequence>48</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>44</thread>
+  <message>CONEXION RECIBIDA de /192.168.20.28:60313</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:44.450819Z</date>
+  <millis>1680291944450</millis>
+  <nanos>819000</nanos>
+  <sequence>49</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>22</thread>
+  <message>ARCHIVO ENVIADO: archivo_100Mb.txt (104857600 bytes)</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:44.455219Z</date>
+  <millis>1680291944455</millis>
+  <nanos>219000</nanos>
+  <sequence>50</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>22</thread>
+  <message>TIEMPO TOTAL DE CONEXION (/192.168.20.28:60289): 32793 milisegundos</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:44.463899Z</date>
+  <millis>1680291944463</millis>
+  <nanos>899000</nanos>
+  <sequence>51</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>45</thread>
+  <message>CONEXION RECIBIDA de /192.168.20.28:60293</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:44.585856Z</date>
+  <millis>1680291944585</millis>
+  <nanos>856000</nanos>
+  <sequence>52</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>30</thread>
+  <message>ARCHIVO ENVIADO: archivo_100Mb.txt (104857600 bytes)</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:44.587252Z</date>
+  <millis>1680291944587</millis>
+  <nanos>252000</nanos>
+  <sequence>53</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>30</thread>
+  <message>TIEMPO TOTAL DE CONEXION (/192.168.20.28:60310): 32879 milisegundos</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:44.627538Z</date>
+  <millis>1680291944627</millis>
+  <nanos>538000</nanos>
+  <sequence>54</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>43</thread>
+  <message>CONEXION RECIBIDA de /192.168.20.28:60314</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:45.486141Z</date>
+  <millis>1680291945486</millis>
+  <nanos>141000</nanos>
+  <sequence>55</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>36</thread>
+  <message>ARCHIVO ENVIADO: archivo_100Mb.txt (104857600 bytes)</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:45.487350Z</date>
+  <millis>1680291945487</millis>
+  <nanos>350000</nanos>
+  <sequence>56</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>36</thread>
+  <message>TIEMPO TOTAL DE CONEXION (/192.168.20.28:60299): 33812 milisegundos</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:45.705646Z</date>
+  <millis>1680291945705</millis>
+  <nanos>646000</nanos>
+  <sequence>57</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>16</thread>
+  <message>ARCHIVO ENVIADO: archivo_100Mb.txt (104857600 bytes)</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:45.726044Z</date>
+  <millis>1680291945726</millis>
+  <nanos>44000</nanos>
+  <sequence>58</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>16</thread>
+  <message>TIEMPO TOTAL DE CONEXION (/192.168.20.28:60285): 34092 milisegundos</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:45.763097Z</date>
+  <millis>1680291945763</millis>
+  <nanos>97000</nanos>
+  <sequence>59</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>15</thread>
+  <message>ARCHIVO ENVIADO: archivo_100Mb.txt (104857600 bytes)</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:45.790128Z</date>
+  <millis>1680291945790</millis>
+  <nanos>128000</nanos>
+  <sequence>60</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>15</thread>
+  <message>TIEMPO TOTAL DE CONEXION (/192.168.20.28:60286): 34134 milisegundos</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:45.989165Z</date>
+  <millis>1680291945989</millis>
+  <nanos>165000</nanos>
+  <sequence>61</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>19</thread>
+  <message>ARCHIVO ENVIADO: archivo_100Mb.txt (104857600 bytes)</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:46.005830Z</date>
+  <millis>1680291946005</millis>
+  <nanos>830000</nanos>
+  <sequence>62</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>34</thread>
+  <message>ARCHIVO ENVIADO: archivo_100Mb.txt (104857600 bytes)</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:46.041586Z</date>
+  <millis>1680291946041</millis>
+  <nanos>586000</nanos>
+  <sequence>63</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>25</thread>
+  <message>ARCHIVO ENVIADO: archivo_100Mb.txt (104857600 bytes)</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:46.104460Z</date>
+  <millis>1680291946104</millis>
+  <nanos>460000</nanos>
+  <sequence>65</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>34</thread>
+  <message>TIEMPO TOTAL DE CONEXION (/192.168.20.28:60303): 34359 milisegundos</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:46.101725Z</date>
+  <millis>1680291946101</millis>
+  <nanos>725000</nanos>
+  <sequence>64</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>19</thread>
+  <message>TIEMPO TOTAL DE CONEXION (/192.168.20.28:60284): 34299 milisegundos</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:46.151167Z</date>
+  <millis>1680291946151</millis>
+  <nanos>167000</nanos>
+  <sequence>66</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>25</thread>
+  <message>TIEMPO TOTAL DE CONEXION (/192.168.20.28:60282): 34401 milisegundos</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:46.413411Z</date>
+  <millis>1680291946413</millis>
+  <nanos>411000</nanos>
+  <sequence>67</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>31</thread>
+  <message>ARCHIVO ENVIADO: archivo_100Mb.txt (104857600 bytes)</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:46.489581Z</date>
+  <millis>1680291946489</millis>
+  <nanos>581000</nanos>
+  <sequence>68</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>31</thread>
+  <message>TIEMPO TOTAL DE CONEXION (/192.168.20.28:60311): 34763 milisegundos</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:46.573676Z</date>
+  <millis>1680291946573</millis>
+  <nanos>676000</nanos>
+  <sequence>69</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>ARCHIVO ENVIADO: archivo_100Mb.txt (104857600 bytes)</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:46.575460Z</date>
+  <millis>1680291946575</millis>
+  <nanos>460000</nanos>
+  <sequence>70</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>TIEMPO TOTAL DE CONEXION (/192.168.20.28:60291): 34847 milisegundos</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:46.686263Z</date>
+  <millis>1680291946686</millis>
+  <nanos>263000</nanos>
+  <sequence>71</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>18</thread>
+  <message>ARCHIVO ENVIADO: archivo_100Mb.txt (104857600 bytes)</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:46.687628Z</date>
+  <millis>1680291946687</millis>
+  <nanos>628000</nanos>
+  <sequence>72</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>18</thread>
+  <message>TIEMPO TOTAL DE CONEXION (/192.168.20.28:60292): 35041 milisegundos</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:46.902710Z</date>
+  <millis>1680291946902</millis>
+  <nanos>710000</nanos>
+  <sequence>73</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>33</thread>
+  <message>ARCHIVO ENVIADO: archivo_100Mb.txt (104857600 bytes)</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:46.910495Z</date>
+  <millis>1680291946910</millis>
+  <nanos>495000</nanos>
+  <sequence>74</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>33</thread>
+  <message>TIEMPO TOTAL DE CONEXION (/192.168.20.28:60296): 35261 milisegundos</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:46.971249Z</date>
+  <millis>1680291946971</millis>
+  <nanos>249000</nanos>
+  <sequence>75</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>17</thread>
+  <message>ARCHIVO ENVIADO: archivo_100Mb.txt (104857600 bytes)</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:46.986481Z</date>
+  <millis>1680291946986</millis>
+  <nanos>481000</nanos>
+  <sequence>76</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>17</thread>
+  <message>TIEMPO TOTAL DE CONEXION (/192.168.20.28:60280): 35327 milisegundos</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:58.145484Z</date>
+  <millis>1680291958145</millis>
+  <nanos>484000</nanos>
+  <sequence>77</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>41</thread>
+  <message>ARCHIVO ENVIADO: archivo_100Mb.txt (104857600 bytes)</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:58.159985Z</date>
+  <millis>1680291958159</millis>
+  <nanos>985000</nanos>
+  <sequence>78</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>41</thread>
+  <message>TIEMPO TOTAL DE CONEXION (/192.168.20.28:60297): 14343 milisegundos</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:58.742863Z</date>
+  <millis>1680291958742</millis>
+  <nanos>863000</nanos>
+  <sequence>79</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>35</thread>
+  <message>ARCHIVO ENVIADO: archivo_100Mb.txt (104857600 bytes)</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:58.768159Z</date>
+  <millis>1680291958768</millis>
+  <nanos>159000</nanos>
+  <sequence>80</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>35</thread>
+  <message>TIEMPO TOTAL DE CONEXION (/192.168.20.28:60300): 15824 milisegundos</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:59.258911Z</date>
+  <millis>1680291959258</millis>
+  <nanos>911000</nanos>
+  <sequence>81</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>42</thread>
+  <message>ARCHIVO ENVIADO: archivo_100Mb.txt (104857600 bytes)</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:59.263147Z</date>
+  <millis>1680291959263</millis>
+  <nanos>147000</nanos>
+  <sequence>82</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>42</thread>
+  <message>TIEMPO TOTAL DE CONEXION (/192.168.20.28:60302): 15023 milisegundos</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:59.278481Z</date>
+  <millis>1680291959278</millis>
+  <nanos>481000</nanos>
+  <sequence>83</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>43</thread>
+  <message>ARCHIVO ENVIADO: archivo_100Mb.txt (104857600 bytes)</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:59.280258Z</date>
+  <millis>1680291959280</millis>
+  <nanos>258000</nanos>
+  <sequence>84</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>39</thread>
+  <message>ARCHIVO ENVIADO: archivo_100Mb.txt (104857600 bytes)</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:59.286095Z</date>
+  <millis>1680291959286</millis>
+  <nanos>95000</nanos>
+  <sequence>85</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>43</thread>
+  <message>TIEMPO TOTAL DE CONEXION (/192.168.20.28:60314): 14612 milisegundos</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:59.317871Z</date>
+  <millis>1680291959317</millis>
+  <nanos>871000</nanos>
+  <sequence>86</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>39</thread>
+  <message>TIEMPO TOTAL DE CONEXION (/192.168.20.28:60298): 15842 milisegundos</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:59.364976Z</date>
+  <millis>1680291959364</millis>
+  <nanos>976000</nanos>
+  <sequence>87</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>38</thread>
+  <message>ARCHIVO ENVIADO: archivo_100Mb.txt (104857600 bytes)</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:59.381245Z</date>
+  <millis>1680291959381</millis>
+  <nanos>245000</nanos>
+  <sequence>88</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>38</thread>
+  <message>TIEMPO TOTAL DE CONEXION (/192.168.20.28:60305): 16302 milisegundos</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:59.400173Z</date>
+  <millis>1680291959400</millis>
+  <nanos>173000</nanos>
+  <sequence>89</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>44</thread>
+  <message>ARCHIVO ENVIADO: archivo_100Mb.txt (104857600 bytes)</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:59.415964Z</date>
+  <millis>1680291959415</millis>
+  <nanos>964000</nanos>
+  <sequence>90</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>44</thread>
+  <message>TIEMPO TOTAL DE CONEXION (/192.168.20.28:60313): 15154 milisegundos</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:59.552274Z</date>
+  <millis>1680291959552</millis>
+  <nanos>274000</nanos>
+  <sequence>91</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>40</thread>
+  <message>ARCHIVO ENVIADO: archivo_100Mb.txt (104857600 bytes)</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:59.553986Z</date>
+  <millis>1680291959553</millis>
+  <nanos>986000</nanos>
+  <sequence>92</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>40</thread>
+  <message>TIEMPO TOTAL DE CONEXION (/192.168.20.28:60281): 15530 milisegundos</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:59.722256Z</date>
+  <millis>1680291959722</millis>
+  <nanos>256000</nanos>
+  <sequence>93</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>13</thread>
+  <message>ARCHIVO ENVIADO: archivo_100Mb.txt (104857600 bytes)</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:59.727830Z</date>
+  <millis>1680291959727</millis>
+  <nanos>830000</nanos>
+  <sequence>94</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>13</thread>
+  <message>TIEMPO TOTAL DE CONEXION (/192.168.20.28:60301): 15481 milisegundos</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:59.738628Z</date>
+  <millis>1680291959738</millis>
+  <nanos>628000</nanos>
+  <sequence>95</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>45</thread>
+  <message>ARCHIVO ENVIADO: archivo_100Mb.txt (104857600 bytes)</message>
+</record>
+<record>
+  <date>2023-03-31T19:45:59.741146Z</date>
+  <millis>1680291959741</millis>
+  <nanos>146000</nanos>
+  <sequence>96</sequence>
+  <logger>GENERAR LOG</logger>
+  <level>INFO</level>
+  <class>Mensajero</class>
+  <method>run</method>
+  <thread>45</thread>
+  <message>TIEMPO TOTAL DE CONEXION (/192.168.20.28:60293): 15272 milisegundos</message>
+</record>
+</log>
