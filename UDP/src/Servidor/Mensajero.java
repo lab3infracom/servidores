@@ -12,6 +12,10 @@ public class Mensajero extends Thread {
     
     /************************************************* CONSTANTES ***********************************************/
 
+
+    // Buffer
+    private final Buffer buffer;
+
     // idActual
     private static int idActual = 0;
 
@@ -38,8 +42,9 @@ public class Mensajero extends Thread {
 
     /************************************************* CONSTRUCTOR ***********************************************/
 
-    public Mensajero(File archivo, int tamanioChunck, InetAddress ipCliente, int puertoCliente, DatagramSocket socket, Logger logger) {
+    public Mensajero(Buffer buffer, File archivo, int tamanioChunck, InetAddress ipCliente, int puertoCliente, DatagramSocket socket, Logger logger) {
         idActual++;
+        this.buffer = buffer;
         this.ID = idActual;
         this.ARCHIVO = archivo;
         this.TAMANIO_CHUNK = tamanioChunck;
@@ -54,8 +59,11 @@ public class Mensajero extends Thread {
     @Override
     public void run() {
         try {
+
+            // Se agrega un cliente al buffer
+            buffer.aumentar();
+
             LOGGER.info("CONEXION RECIBIDA de " + IP_CLIENTE + ":" + PUERTO_CLIENTE);
-            LOGGER.info("ARCHIVO ENVIADO: " + ARCHIVO.getName() + " (" + Long.toString(ARCHIVO.length()) + " bytes)");
             
             byte[] nomArchivo = ARCHIVO.getName().getBytes();
             DatagramPacket paqueteNom = new DatagramPacket(nomArchivo, nomArchivo.length, IP_CLIENTE, PUERTO_CLIENTE);
@@ -78,7 +86,11 @@ public class Mensajero extends Thread {
             long fin = System.currentTimeMillis();
             long tiempo = fin - inicio;
 
+            LOGGER.info("ARCHIVO ENVIADO: " + ARCHIVO.getName() + " (" + Long.toString(ARCHIVO.length()) + " bytes)");
             LOGGER.info("TIEMPO TOTAL DE CONEXION (" + IP_CLIENTE + ":" + PUERTO_CLIENTE + "): "+ tiempo +" milisegundos");
+
+            // Se elimina un cliente del buffer
+            buffer.disminuir();
 
         } catch (IOException e) {
             e.printStackTrace();

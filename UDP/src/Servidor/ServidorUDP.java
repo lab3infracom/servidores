@@ -27,6 +27,8 @@ public class ServidorUDP {
 
     // Logger
     private static final Logger LOGGER=Logger.getLogger("GENERAR LOG");
+
+    private static Buffer colaServidor = new Buffer();
  
     /************************************************* MAIN ***********************************************/
     
@@ -66,6 +68,7 @@ public class ServidorUDP {
 
             // Se espera hasta establecer la conxion con un cliente
             serverSocket.receive(paqueteRecibido);
+
             InetAddress ipCliente = paqueteRecibido.getAddress();
             int puertoCliente = paqueteRecibido.getPort();
             
