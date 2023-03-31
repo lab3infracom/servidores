@@ -29,7 +29,7 @@
 
 ### Servidor UDP
 0. Se necesita descargar en la maquina virtual el paquete de java con la instruccion:
-   > sudo apt-get install default-jdk
+   - `sudo apt-get install default-jdk`
 1. Asegurese de que la maquina virtual tenga como minimo 2gb de ram, de no ser así configurele con los botones de VM Ware.
 2. Para poder correr el servidor TCP se hace necesaria la transliteracion de todo el codigo de los archivos ManejadorCliente.java y ServidorTCP.java a archivos homonimos en la maquina virtual ubuntu server 20.04 O 18.04.
 3. Tambien hace falta la creacion de una carpeta Logs dentro de la misma carpeta donde se crearon los archivos ManejadorCliente.java y ServidorTCP.java.
