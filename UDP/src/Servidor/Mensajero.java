@@ -12,10 +12,6 @@ public class Mensajero extends Thread {
     
     /************************************************* CONSTANTES ***********************************************/
 
-
-    // Buffer
-    private final Buffer buffer;
-
     // idActual
     private static int idActual = 0;
 
@@ -42,9 +38,8 @@ public class Mensajero extends Thread {
 
     /************************************************* CONSTRUCTOR ***********************************************/
 
-    public Mensajero(Buffer buffer, File archivo, int tamanioChunck, InetAddress ipCliente, int puertoCliente, DatagramSocket socket, Logger logger) {
+    public Mensajero(File archivo, int tamanioChunck, InetAddress ipCliente, int puertoCliente, DatagramSocket socket, Logger logger) {
         idActual++;
-        this.buffer = buffer;
         this.ID = idActual;
         this.ARCHIVO = archivo;
         this.TAMANIO_CHUNK = tamanioChunck;
@@ -59,24 +54,17 @@ public class Mensajero extends Thread {
     @Override
     public void run() {
         try {
-
-            // Se agrega un cliente al buffer
-            buffer.aumentar();
-            while (buffer.dar()<25){
-                Thread.yield();
-            }
-
             LOGGER.info("CONEXION RECIBIDA de " + IP_CLIENTE + ":" + PUERTO_CLIENTE);
             
             byte[] nomArchivo = ARCHIVO.getName().getBytes();
             DatagramPacket paqueteNom = new DatagramPacket(nomArchivo, nomArchivo.length, IP_CLIENTE, PUERTO_CLIENTE);
             SERVER_SOCKET.send(paqueteNom);
-
+            
             // Leer archivo y enviar en fragmentos
             FileInputStream fileInputStream = new FileInputStream(ARCHIVO);
             byte[] datosEnviados = new byte[TAMANIO_CHUNK];
             int bytesLeidos;
-
+            
             // Se inicia el envio del archivo
             long inicio = System.currentTimeMillis();
             while ((bytesLeidos = fileInputStream.read(datosEnviados)) != -1) {
@@ -85,10 +73,10 @@ public class Mensajero extends Thread {
                 SERVER_SOCKET.send(paqueteEnviado);
             }
             fileInputStream.close();
-
+            
             long fin = System.currentTimeMillis();
             long tiempo = fin - inicio;
-
+            
             LOGGER.info("ARCHIVO ENVIADO: " + ARCHIVO.getName() + " (" + Long.toString(ARCHIVO.length()) + " bytes)");
             LOGGER.info("TIEMPO TOTAL DE CONEXION (" + IP_CLIENTE + ":" + PUERTO_CLIENTE + "): "+ tiempo +" milisegundos");
 

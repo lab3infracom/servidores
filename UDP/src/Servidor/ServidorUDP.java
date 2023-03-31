@@ -27,8 +27,6 @@ public class ServidorUDP {
 
     // Logger
     private static final Logger LOGGER=Logger.getLogger("GENERAR LOG");
-
-    private static Buffer colaServidor = new Buffer();
  
     /************************************************* MAIN ***********************************************/
     
@@ -68,7 +66,6 @@ public class ServidorUDP {
 
             // Se espera hasta establecer la conxion con un cliente
             serverSocket.receive(paqueteRecibido);
-
             InetAddress ipCliente = paqueteRecibido.getAddress();
             int puertoCliente = paqueteRecibido.getPort();
             
@@ -81,7 +78,7 @@ public class ServidorUDP {
             }
 
             // Se crea el Thread que se encarga de enviar el archivo al cliente
-            Mensajero mensajero = new Mensajero(colaServidor, archivo, TAMANIO_CHUNK, ipCliente, puertoCliente, serverSocket, LOGGER);
+            Mensajero mensajero = new Mensajero(archivo, TAMANIO_CHUNK, ipCliente, puertoCliente, serverSocket, LOGGER);
             mensajero.start();
             
         }
