@@ -7,12 +7,20 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 
+// TODO - Revisar maximo 25 conexiones concurrentes
 public class Mensajero extends Thread {
     
     /************************************************* CONSTANTES ***********************************************/
 
+
     // Buffer
     private final Buffer buffer;
+
+    // idActual
+    private static int idActual = 0;
+
+    // idMensajero
+    private final int ID;
 
     // Archivo que se va a enviar
     private final File ARCHIVO;
@@ -35,7 +43,9 @@ public class Mensajero extends Thread {
     /************************************************* CONSTRUCTOR ***********************************************/
 
     public Mensajero(Buffer buffer, File archivo, int tamanioChunck, InetAddress ipCliente, int puertoCliente, DatagramSocket socket, Logger logger) {
+        idActual++;
         this.buffer = buffer;
+        this.ID = idActual;
         this.ARCHIVO = archivo;
         this.TAMANIO_CHUNK = tamanioChunck;
         this.IP_CLIENTE = ipCliente;
@@ -49,6 +59,9 @@ public class Mensajero extends Thread {
     @Override
     public void run() {
         try {
+
+            // Se agrega un cliente al buffer
+            buffer.aumentar();
 
             LOGGER.info("CONEXION RECIBIDA de " + IP_CLIENTE + ":" + PUERTO_CLIENTE);
             
@@ -66,7 +79,7 @@ public class Mensajero extends Thread {
             while ((bytesLeidos = fileInputStream.read(datosEnviados)) != -1) {
                 byte[] datosChunck = Arrays.copyOfRange(datosEnviados, 0, bytesLeidos);
                 DatagramPacket paqueteEnviado = new DatagramPacket(datosChunck, bytesLeidos, IP_CLIENTE, PUERTO_CLIENTE);
-                buffer.put(this);
+                SERVER_SOCKET.send(paqueteEnviado);
             }
             fileInputStream.close();
 
@@ -75,6 +88,9 @@ public class Mensajero extends Thread {
 
             LOGGER.info("ARCHIVO ENVIADO: " + ARCHIVO.getName() + " (" + Long.toString(ARCHIVO.length()) + " bytes)");
             LOGGER.info("TIEMPO TOTAL DE CONEXION (" + IP_CLIENTE + ":" + PUERTO_CLIENTE + "): "+ tiempo +" milisegundos");
+
+            // Se elimina un cliente del buffer
+            buffer.disminuir();
 
         } catch (IOException e) {
             e.printStackTrace();
