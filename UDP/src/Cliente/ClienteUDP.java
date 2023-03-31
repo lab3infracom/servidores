@@ -21,7 +21,7 @@ public class ClienteUDP extends Thread {
     private static final int TAMANIO_CHUNK = 63488;
 
     // TODO: IP del servidor
-    private static final String IP_SERVIDOR = "192.168.5.119";
+    private static final String IP_SERVIDOR = "192.168.20.35";
 
     /************************************************* CONSTANTES ***********************************************/
 
@@ -43,46 +43,46 @@ public class ClienteUDP extends Thread {
 
     @Override
     public void run() {
-        System.out.println("Cliente " + this.ID + " iniciado");
+        LOGGER.info("CLIENTE " + ID + " INICIADO");
         // Crear socket UDP y enviar solicitud de conexión al servidor
         DatagramSocket clientSocket;
         try {
             // Se establece la conexión enviando un mensaje al servidor
             clientSocket = new DatagramSocket();
+            LOGGER.info("SOCKET CLIENTE " + ID + " (" + clientSocket.getLocalAddress() + ":" + clientSocket.getLocalPort() + ")");
             byte[] datosConexion = "Conectar".getBytes();
             InetAddress direcServidor = InetAddress.getByName(IP_SERVIDOR);
             DatagramPacket connectPacket = new DatagramPacket(datosConexion, datosConexion.length, direcServidor, PUERTO);
             clientSocket.send(connectPacket);
-            System.out.println(this.ID + "-Paquete de conexion enviado al servidor: " + connectPacket.getAddress() + ":" + connectPacket.getPort());
-
+            
+            
             // Se crea el archivo para almacenar la respuesta del servidor
             FileOutputStream outputFile = new FileOutputStream(this.RUTA);
             byte[] buffer = new byte[TAMANIO_CHUNK];
             DatagramPacket paqueteRecibido = new DatagramPacket(buffer, buffer.length);
             // Recibir respuesta del servidor
-            int contador = 1;
             while (true) {
-                System.out.println(this.ID + "-Esperando paquete del servidor...");
                 clientSocket.receive(paqueteRecibido);
-                System.out.println(this.ID + "-Recibido paquete " + contador + " del servidor...");
                 outputFile.write(paqueteRecibido.getData(), 0, paqueteRecibido.getLength());
                 // System.out.println(paqueteRecibido.getLength() + " bytes recibidos, " + buffer.length + " bytes esperados");
-                contador++;
                 if (paqueteRecibido.getLength() < buffer.length) {
                     // Si el paquete recibido es más corto que el búfer, significa que se ha alcanzado el final del archivo
-                    System.out.println(this.ID + "-No hay mas datos que recibir");
                     break;
                 }
             }
             
+            LOGGER.info("CONEXION CLIENTE " + ID + " (" + clientSocket.getLocalAddress() + ":" + clientSocket.getLocalPort() + ") FINALIZADA");
+
             // Cerrar el archivo de salida y el socket
             outputFile.close();
             clientSocket.close();
-            System.out.println(this.ID + "-FIN");
+
+            LOGGER.info("ARCHIVO RECIBIDO CON EL NOMBRE: " + ID + " CON TAMAÑO: ");
+            LOGGER.info("CONEXION CLIENTE " + ID + " (" + clientSocket.getLocalAddress() + ":" + clientSocket.getLocalPort() + ") FINALIZADA");
 
 
         } catch (IOException e) {
-            System.out.println("Error al conectar con el servidor: " + e.getMessage());
+            LOGGER.warning("Error al conectar con el servidor: " + e.getMessage());
         }
 
     }

@@ -54,8 +54,9 @@ public class Mensajero extends Thread {
     @Override
     public void run() {
         try {
-            LOGGER.info("Mensajero" + this.ID + "---CONEXION RECIBIDA de " + IP_CLIENTE + ":" + PUERTO_CLIENTE);
-            LOGGER.info("Mensajero" + this.ID + "---ARCHIVO: " + ARCHIVO.getName() + " (" + Long.toString(ARCHIVO.length()) + " bytes)");
+            LOGGER.info("CONEXION RECIBIDA de " + IP_CLIENTE + ":" + PUERTO_CLIENTE);
+            LOGGER.info("ARCHIVO ENVIADO: " + ARCHIVO.getName() + " (" + Long.toString(ARCHIVO.length()) + " bytes)");
+            
             // Leer archivo y enviar en fragmentos
             FileInputStream fileInputStream = new FileInputStream(ARCHIVO);
             byte[] datosEnviados = new byte[TAMANIO_CHUNK];
@@ -63,21 +64,18 @@ public class Mensajero extends Thread {
 
             // Se inicia el envio del archivo
             long inicio = System.currentTimeMillis();
-            int contador = 1;
             while ((bytesLeidos = fileInputStream.read(datosEnviados)) != -1) {
                 byte[] datosChunck = Arrays.copyOfRange(datosEnviados, 0, bytesLeidos);
                 DatagramPacket paqueteEnviado = new DatagramPacket(datosChunck, bytesLeidos, IP_CLIENTE, PUERTO_CLIENTE);
                 SERVER_SOCKET.send(paqueteEnviado);
-                LOGGER.info("Mensajero" + this.ID + "- " + contador + " DATAGRAMAS ENVIADOS");
-                contador++;
             }
             fileInputStream.close();
 
             long fin = System.currentTimeMillis();
             long tiempo = fin - inicio;
-            LOGGER.info("Mensajero" + this.ID + "-TIEMPO TOTAL DE CONEXION: "+ tiempo +" milisegundos");
 
-            System.out.println("Archivo enviado a " + IP_CLIENTE + ":" + PUERTO_CLIENTE);
+            LOGGER.info("TIEMPO TOTAL DE CONEXION (" + IP_CLIENTE + ":" + PUERTO_CLIENTE + "): "+ tiempo +" milisegundos");
+
         } catch (IOException e) {
             e.printStackTrace();
         }
