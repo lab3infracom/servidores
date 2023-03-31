@@ -1,27 +1,12 @@
 public class Buffer {
+    private int numClientes=0;
+    public Buffer(){
 
-    private static int numClientes=0;
-
+    }
+    public synchronized int dar(){
+        return numClientes;
+    }
     public synchronized void aumentar(){
-        
-        while (numClientes==25)
-        {
-            try {
-                wait();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-
         numClientes++;
     }
-
-    public synchronized void disminuir(){
-
-        numClientes--;
-
-        notify();
-    }
-
-
 }

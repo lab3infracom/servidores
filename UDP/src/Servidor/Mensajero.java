@@ -62,6 +62,9 @@ public class Mensajero extends Thread {
 
             // Se agrega un cliente al buffer
             buffer.aumentar();
+            while (buffer.dar()<25){
+                Thread.yield();
+            }
 
             LOGGER.info("CONEXION RECIBIDA de " + IP_CLIENTE + ":" + PUERTO_CLIENTE);
             
