@@ -14,14 +14,12 @@ public class Buffer {
         }
 
         numClientes++;
+        notify();
     }
 
     public synchronized void disminuir(){
 
         numClientes--;
-
         notify();
     }
-
-
 }
