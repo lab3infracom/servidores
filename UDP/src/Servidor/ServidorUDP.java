@@ -20,18 +20,18 @@ public class ServidorUDP {
     private static final int TAMANIO_CHUNK = 63488;
 
     // Numero maximo de conexiones concurrentes
-    // private static final int MAXIMO_CONEXIONES = 25;
+    private static final int MAXIMO_CONEXIONES = 25;
 
     // Directorio donde se encuentran los archivos del servidor
     private static final String DIRECTORIO_ARCHIVOS = "./";
 
     // Logger
-    private static final Logger LOGGER=Logger.getLogger("GENERAR LOG");
+    private static final Logger LOGGER = Logger.getLogger("GENERAR LOG");
 
-    private static Buffer colaServidor = new Buffer(25);
- 
+    private static Buffer colaServidor = new Buffer(MAXIMO_CONEXIONES);
+
     /************************************************* MAIN ***********************************************/
-    
+
     public static void main(String[] args) throws IOException {
 
         // Generar log
@@ -41,7 +41,7 @@ public class ServidorUDP {
         int hora = LocalTime.now().getHour();
         int minuto = LocalTime.now().getMinute();
         int segundo = LocalTime.now().getSecond();
-        FileHandler fh = new FileHandler(DIRECTORIO_ARCHIVOS + "Logs/"+anio+"-"+mes+"-"+dia+"-"+hora+"-"+minuto+"-"+segundo+"-log.txt");
+        FileHandler fh = new FileHandler(DIRECTORIO_ARCHIVOS + "Logs/" + anio + "-" + mes + "-" + dia + "-" + hora + "-" + minuto + "-" + segundo + "-log.txt");
         LOGGER.addHandler(fh);
 
         // Se obtiene el nombre del archivo que se va a transmitir
@@ -51,40 +51,41 @@ public class ServidorUDP {
         System.out.println("2. Archivo de 250MB");
         Scanner myObj = new Scanner(System.in);
         int numArchivo = Integer.parseInt(myObj.nextLine());
-        // System.out.println("--------------------------------------------------");
-        // System.out.println("NUMERO DE CLIENTES CONCURRENTES");
-        // int numClientesConcurrentes = Integer.parseInt(myObj.nextLine());
-        myObj.close();
-        
-        // Se crea el socket para la conexion
-        DatagramSocket serverSocket = new DatagramSocket(PUERTO);
-        // Se establece el buffer que almacena mensajes con el tamanio de un chunk
-        byte[] buffer = new byte[TAMANIO_CHUNK];
-        System.out.println("Servidor iniciado. Esperando conexiones...");
-        
+
+        // Se crea el archivo que se va a transmitir
+        String nombreArchivo;
+        if (numArchivo == 1) {
+            nombreArchivo = "archivo100MB.dat";
+        } else {
+            nombreArchivo = "archivo250MB.dat";
+        }
+        File archivo = new File(DIRECTORIO_ARCHIVOS + nombreArchivo);
+
+        // Se crea el socket del servidor
+        DatagramSocket servidorSocket = new DatagramSocket(PUERTO);
+
         while (true) {
-            // Se crea un paquete que almacena el mensaje recibido
-            DatagramPacket paqueteRecibido = new DatagramPacket(buffer, buffer.length);
+            // Se espera a que llegue una conexion
+            byte[] bufferRecepcion = new byte[TAMANIO_CHUNK];
+            DatagramPacket paqueteRecepcion = new DatagramPacket(bufferRecepcion, TAMANIO_CHUNK);
+            servidorSocket.receive(paqueteRecepcion);
 
-            // Se espera hasta establecer la conxion con un cliente
-            serverSocket.receive(paqueteRecibido);
+            InetAddress direccionCliente = paqueteRecepcion.getAddress();
+            int puertoCliente = paqueteRecepcion.getPort();
 
-            InetAddress ipCliente = paqueteRecibido.getAddress();
-            int puertoCliente = paqueteRecibido.getPort();
-            
-            // Se obtiene el archivo solicitado por el cliente
-            File archivo;
-            if(numArchivo==1){
-                archivo = new File(DIRECTORIO_ARCHIVOS + "archivo_100Mb.txt");
-            } else {
-                archivo = new File(DIRECTORIO_ARCHIVOS + "archivo_250Mb.txt");
-            }
-
-            // Se crea el Thread que se encarga de enviar el archivo al cliente
-            Mensajero mensajero = new Mensajero(colaServidor, archivo, TAMANIO_CHUNK, ipCliente, puertoCliente, serverSocket, LOGGER);
+            // Se encola la conexion en la colaServidor
+            Mensajero mensajero = new Mensajero(colaServidor, archivo, TAMANIO_CHUNK, direccionCliente, puertoCliente, servidorSocket, LOGGER);
+            colaServidor.put(mensajero);
             mensajero.start();
-            
+
+            // Se eliminan de la colaServidor los mensajes que ya han sido procesados
+            while (colaServidor.dar()==25) {
+                Mensajero mensaje = colaServidor.get();
+                if (mensaje != null && mensaje.isAlive()) {
+                    colaServidor.put(mensaje);
+                }
+            }
         }
     }
-
 }
+

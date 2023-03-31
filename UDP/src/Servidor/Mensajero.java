@@ -14,12 +14,6 @@ public class Mensajero extends Thread {
     // Buffer
     private final Buffer buffer;
 
-    // idActual
-    private static int idActual = 0;
-
-    // idMensajero
-    private final int ID;
-
     // Archivo que se va a enviar
     private final File ARCHIVO;
 
@@ -41,9 +35,7 @@ public class Mensajero extends Thread {
     /************************************************* CONSTRUCTOR ***********************************************/
 
     public Mensajero(Buffer buffer, File archivo, int tamanioChunck, InetAddress ipCliente, int puertoCliente, DatagramSocket socket, Logger logger) {
-        idActual++;
         this.buffer = buffer;
-        this.ID = idActual;
         this.ARCHIVO = archivo;
         this.TAMANIO_CHUNK = tamanioChunck;
         this.IP_CLIENTE = ipCliente;
@@ -57,8 +49,6 @@ public class Mensajero extends Thread {
     @Override
     public void run() {
         try {
-            // Se adquiere un permiso del buffer
-            buffer.adquirir();
 
             LOGGER.info("CONEXION RECIBIDA de " + IP_CLIENTE + ":" + PUERTO_CLIENTE);
             
@@ -76,7 +66,7 @@ public class Mensajero extends Thread {
             while ((bytesLeidos = fileInputStream.read(datosEnviados)) != -1) {
                 byte[] datosChunck = Arrays.copyOfRange(datosEnviados, 0, bytesLeidos);
                 DatagramPacket paqueteEnviado = new DatagramPacket(datosChunck, bytesLeidos, IP_CLIENTE, PUERTO_CLIENTE);
-                SERVER_SOCKET.send(paqueteEnviado);
+                buffer.put(this);
             }
             fileInputStream.close();
 
@@ -86,10 +76,7 @@ public class Mensajero extends Thread {
             LOGGER.info("ARCHIVO ENVIADO: " + ARCHIVO.getName() + " (" + Long.toString(ARCHIVO.length()) + " bytes)");
             LOGGER.info("TIEMPO TOTAL DE CONEXION (" + IP_CLIENTE + ":" + PUERTO_CLIENTE + "): "+ tiempo +" milisegundos");
 
-            // Se libera el permiso del buffer
-            buffer.liberar();
-
-        } catch (IOException | InterruptedException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

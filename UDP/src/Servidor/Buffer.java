@@ -1,18 +1,32 @@
-import java.util.concurrent.Semaphore;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Buffer {
+    private final List<Mensajero> buffer = new ArrayList<>();
+    private final int tamanoMaximo;
 
-    private final Semaphore semaphore;
-
-    public Buffer(int maxConcurrentConnections) {
-        semaphore = new Semaphore(maxConcurrentConnections);
+    public Buffer(int tamanoMaximo) {
+        this.tamanoMaximo = tamanoMaximo;
     }
 
-    public void adquirir() throws InterruptedException {
-        semaphore.acquire();
+    public synchronized void put(Mensajero mensajero) throws InterruptedException {
+        while (buffer.size() == tamanoMaximo) {
+            wait();
+        }
+        buffer.add(mensajero);
+        notifyAll();
     }
 
-    public void liberar() {
-        semaphore.release();
+    public synchronized Mensajero get() throws InterruptedException {
+        while (buffer.isEmpty()) {
+            wait();
+        }
+        Mensajero mensajero = buffer.remove(0);
+        notifyAll();
+        return mensajero;
+    }
+
+    public synchronized int dar() {
+        return buffer.size();
     }
 }
