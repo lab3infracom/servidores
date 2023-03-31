@@ -59,31 +59,36 @@ public class ClienteUDP extends Thread {
             DatagramPacket paqueteInicial = new DatagramPacket(entrada, entrada.length);
             clientSocket.receive(paqueteInicial);
             String mensajeInicial = new String(paqueteInicial.getData(), 0, paqueteInicial.getLength());
-            System.out.println("MENSAJE INICIAL RECIBIDO: " + mensajeInicial);
 
             // Se crea el archivo para almacenar la respuesta del servidor
             FileOutputStream outputFile = new FileOutputStream(this.RUTA);
             byte[] buffer = new byte[TAMANIO_CHUNK];
             DatagramPacket paqueteRecibido = new DatagramPacket(buffer, buffer.length);
             // Recibir respuesta del servidor
+            long tamanioArchivo = 0;
+            long inicio = System.currentTimeMillis();
             while (true) {
                 clientSocket.receive(paqueteRecibido);
                 outputFile.write(paqueteRecibido.getData(), 0, paqueteRecibido.getLength());
+                tamanioArchivo += paqueteRecibido.getLength();
                 if (paqueteRecibido.getLength() < buffer.length) {
                     // Si el paquete recibido es más corto que el búfer, significa que se ha alcanzado el final del archivo
                     break;
                 }
             }
+            long fin = System.currentTimeMillis();
+            long tiempo = fin - inicio;
+
             
-            LOGGER.info("ARCHIVO RECIBIDO CON EL NOMBRE: " + mensajeInicial + " CON TAMAÑO: ");
-            LOGGER.info("CONEXION CLIENTE " + ID + " (" + clientSocket.getLocalAddress() + ":" + clientSocket.getLocalPort() + ") FINALIZADA");
+            LOGGER.info("CLIENTE " + ID + "-ARCHIVO RECIBIDO CON EL NOMBRE: " + mensajeInicial + " CON TAMAÑO: " + tamanioArchivo + " BYTES");
+            LOGGER.info("CONEXION CLIENTE " + ID + " (" + clientSocket.getLocalAddress() + ":" + clientSocket.getLocalPort() + ") FINALIZADA (" + tiempo + " milisegundos)");
 
             // Cerrar el archivo de salida y el socket
             outputFile.close();
             clientSocket.close();
 
         } catch (IOException e) {
-            LOGGER.warning("Error al conectar con el servidor: " + e.getMessage());
+            LOGGER.warning("CLIENTE " + ID + "-Error al conectar con el servidor: " + e.getMessage());
         }
 
     }
