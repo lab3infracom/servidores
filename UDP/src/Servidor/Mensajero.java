@@ -92,9 +92,6 @@ public class Mensajero extends Thread {
             LOGGER.info("ARCHIVO ENVIADO: " + ARCHIVO.getName() + " (" + Long.toString(ARCHIVO.length()) + " bytes)");
             LOGGER.info("TIEMPO TOTAL DE CONEXION (" + IP_CLIENTE + ":" + PUERTO_CLIENTE + "): "+ tiempo +" milisegundos");
 
-            // Se elimina un cliente del buffer
-            buffer.disminuir();
-
         } catch (IOException e) {
             e.printStackTrace();
         }
