@@ -28,7 +28,7 @@ public class ServidorUDP {
     // Logger
     private static final Logger LOGGER=Logger.getLogger("GENERAR LOG");
 
-    private static Buffer colaServidor = new Buffer();
+    private static Buffer colaServidor = new Buffer(25);
  
     /************************************************* MAIN ***********************************************/
     

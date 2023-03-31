@@ -4,8 +4,8 @@ public class Buffer {
 
     private final Semaphore semaphore;
 
-    public Buffer() {
-        semaphore = new Semaphore(25);
+    public Buffer(int maxConcurrentConnections) {
+        semaphore = new Semaphore(maxConcurrentConnections);
     }
 
     public void adquirir() throws InterruptedException {
@@ -16,4 +16,3 @@ public class Buffer {
         semaphore.release();
     }
 }
-
