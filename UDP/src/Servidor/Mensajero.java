@@ -57,6 +57,10 @@ public class Mensajero extends Thread {
             LOGGER.info("CONEXION RECIBIDA de " + IP_CLIENTE + ":" + PUERTO_CLIENTE);
             LOGGER.info("ARCHIVO ENVIADO: " + ARCHIVO.getName() + " (" + Long.toString(ARCHIVO.length()) + " bytes)");
             
+            byte[] nomArchivo = ARCHIVO.getName().getBytes();
+            DatagramPacket paqueteNom = new DatagramPacket(nomArchivo, nomArchivo.length, IP_CLIENTE, PUERTO_CLIENTE);
+            SERVER_SOCKET.send(paqueteNom);
+
             // Leer archivo y enviar en fragmentos
             FileInputStream fileInputStream = new FileInputStream(ARCHIVO);
             byte[] datosEnviados = new byte[TAMANIO_CHUNK];
