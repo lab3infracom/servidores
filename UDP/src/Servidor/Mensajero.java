@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.logging.Logger;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -64,7 +65,8 @@ public class Mensajero extends Thread {
             long inicio = System.currentTimeMillis();
             int contador = 1;
             while ((bytesLeidos = fileInputStream.read(datosEnviados)) != -1) {
-                DatagramPacket paqueteEnviado = new DatagramPacket(datosEnviados, bytesLeidos, IP_CLIENTE, PUERTO_CLIENTE);
+                byte[] datosChunck = Arrays.copyOfRange(datosEnviados, 0, bytesLeidos);
+                DatagramPacket paqueteEnviado = new DatagramPacket(datosChunck, bytesLeidos, IP_CLIENTE, PUERTO_CLIENTE);
                 SERVER_SOCKET.send(paqueteEnviado);
                 LOGGER.info("Mensajero" + this.ID + "- " + contador + " DATAGRAMAS ENVIADOS");
                 contador++;
