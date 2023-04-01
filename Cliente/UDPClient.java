@@ -5,6 +5,7 @@ import java.net.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.logging.FileHandler;
+import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 
 public class UDPClient extends Thread {
@@ -30,7 +31,7 @@ public class UDPClient extends Thread {
     public void run() {
         try {
 
-            LOGGER.info("Cliente " + ID + " iniciado");
+            LOGGER.log(java.util.logging.Level.INFO, "Cliente " + ID + " iniciado");
 
             // Configurar el socket UDP
             DatagramSocket clientSocket = new DatagramSocket();
@@ -45,7 +46,7 @@ public class UDPClient extends Thread {
             DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
             clientSocket.receive(receivePacket);
             long tiempoInicio = System.currentTimeMillis();
-            LOGGER.info("Cliente " + ID + " Conexion establecida con el servidor");
+            LOGGER.log(java.util.logging.Level.INFO, "Cliente " + ID + " Conexion establecida con el servidor");
 
             String filename = DIR_ARCHIVOS + "ArchivosRecibidos/" + ID + "-Prueba-" + numClients + ".txt";
             FileOutputStream fileOutputStream = new FileOutputStream(filename);
@@ -60,7 +61,7 @@ public class UDPClient extends Thread {
             long tiempoFinal = System.currentTimeMillis();
 
             long tiempoTotal = tiempoFinal - tiempoInicio;
-            LOGGER.info("Cliente " + ID + " Tiempo de recepcion del archivo (" + tamanio + " bytes) fue de " + tiempoTotal + " ms");
+            LOGGER.log(java.util.logging.Level.INFO, "Cliente " + ID + " Tiempo de recepcion del archivo (" + tamanio + " bytes) fue de " + tiempoTotal + " ms");
             
             fileOutputStream.close();
             clientSocket.close();
@@ -78,6 +79,7 @@ public class UDPClient extends Thread {
         int minuto = LocalTime.now().getMinute();
         int segundo = LocalTime.now().getSecond();
         FileHandler fh = new FileHandler(DIR_ARCHIVOS + "Logs/"+anio+"-"+mes+"-"+dia+"-"+hora+"-"+minuto+"-"+segundo+"-log.log");
+        fh.setFormatter(new CustomFormatter());
         LOGGER.addHandler(fh);
         
         // Leer la entrada del usuario para determinar el número de clientes concurrentes

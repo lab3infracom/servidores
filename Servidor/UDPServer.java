@@ -35,7 +35,7 @@ public class UDPServer extends Thread{
             FileInputStream fileInputStream = new FileInputStream(filename);
             int fileSize = fileInputStream.available();
             System.out.println("Enviando archivo " + filename + " (" + fileSize + " bytes) al cliente " + clientAddress + ":" + clientPort);
-            LOGGER.info("Enviando archivo " + filename + " (" + fileSize + " bytes) al cliente " + clientAddress + ":" + clientPort);
+            LOGGER.log(java.util.logging.Level.INFO, "Enviando archivo " + filename + " (" + fileSize + " bytes) al cliente " + clientAddress + ":" + clientPort);
             int numReads = (int) Math.ceil((double) fileSize / (double) sendData.length);
     
             long tiempoInicio = System.currentTimeMillis();
@@ -52,7 +52,7 @@ public class UDPServer extends Thread{
             UDPServer.serverSocket.send(sendPacket);
             
             long tiempoTotal = tiempoFinal - tiempoInicio;
-            LOGGER.info("Tiempo de envio del archivo al cliente (" + clientAddress + ":" + clientPort+ ") fue de " + tiempoTotal + " ms");
+            LOGGER.log(java.util.logging.Level.INFO, "Tiempo de envio del archivo al cliente (" + clientAddress + ":" + clientPort+ ") fue de " + tiempoTotal + " ms");
 
         } catch (IOException e) {
             System.out.println("Error Catch" + e.getMessage());
@@ -69,6 +69,7 @@ public class UDPServer extends Thread{
         int minuto = LocalTime.now().getMinute();
         int segundo = LocalTime.now().getSecond();
         FileHandler fh = new FileHandler("Logs/"+anio+"-"+mes+"-"+dia+"-"+hora+"-"+minuto+"-"+segundo+"-log.log");
+        fh.setFormatter(new CustomFormatter());
         LOGGER.addHandler(fh);
 
         // Leer la entrada del usuario para determinar qué archivo enviar
