@@ -30,14 +30,15 @@ public class ThreadServidorUDP extends Thread {
             fileInputStream = new FileInputStream(filename);
             int fileSize = fileInputStream.available();
             int numReads = (int) Math.ceil((double) fileSize / (double) sendData.length);
-
             //Se envían los paquetes
             for (int i = 0; i < numReads; i++) {
+                System.out.println("Enviando paquete " + (i + 1) + " de " + numReads + ".");
                 int bytesRead = fileInputStream.read(sendData);
                 DatagramPacket sendPacket = new DatagramPacket(sendData, bytesRead, direccionCliente, PuertoCliente);
                 socketServidor.send(sendPacket);
             }
             fileInputStream.close();
+            System.out.println("Thread finalizado.");
 
         } catch (IOException e) {
             e.printStackTrace();
