@@ -9,6 +9,8 @@ public class UDPClient extends Thread {
 
     private final int ID;
 
+    private static int numClients;
+
     public UDPClient(int id) {
         this.ID = id;
     }
@@ -28,7 +30,7 @@ public class UDPClient extends Thread {
             // Recibir el archivo del servidor
             DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
             clientSocket.receive(receivePacket);
-            String filename = "Cliente/ArchivosRecibidos/archivo_recibido" + ID + ".txt";
+            String filename = "Cliente/ArchivosRecibidos/archivo_recibido" + ID + "-Prueba-" + numClients + ".txt";
             FileOutputStream fileOutputStream = new FileOutputStream(filename);
             
             while (receivePacket.getLength() > 0) {
@@ -48,7 +50,7 @@ public class UDPClient extends Thread {
         // Leer la entrada del usuario para determinar el número de clientes concurrentes
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("¿Cuántos clientes desea ejecutar?");
-        int numClients = Integer.parseInt(reader.readLine());
+        numClients = Integer.parseInt(reader.readLine());
         
         // Iniciar tantos hilos de cliente como se indique en la entrada del usuario.
         for (int i = 1; i <= numClients; i++) {
