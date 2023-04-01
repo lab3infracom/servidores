@@ -1,8 +1,6 @@
 import java.io.*;
 import java.net.*;
 
-import javax.sound.midi.Receiver;
-
 public class UDPServer extends Thread{
 
     private static DatagramSocket serverSocket;
