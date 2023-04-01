@@ -62,7 +62,6 @@ public class ClienteUDP extends Thread {
             // Recibir respuesta del servidor
             int contador = 1;
             while (true) {
-                System.out.println(this.ID + "-Esperando paquete del servidor...");
                 clientSocket.receive(paqueteRecibido);
                 outputFile.write(paqueteRecibido.getData(), 0, paqueteRecibido.getLength());
                 // System.out.println(paqueteRecibido.getLength() + " bytes recibidos, " + buffer.length + " bytes esperados");
