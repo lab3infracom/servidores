@@ -9,14 +9,12 @@ public class UDPServer extends Thread{
 
     private DatagramPacket receivePacket;
 
-    private String filename;
+    private static String filename;
 
-    private byte[] sendData;
+    private static byte[] sendData;
 
-    public UDPServer(DatagramPacket receivePacket, String filename, byte[] sendData) {
+    public UDPServer(DatagramPacket receivePacket) {
         this.receivePacket = receivePacket;
-        this.filename = filename;
-        this.sendData = sendData;
     }
 
     public void run() {
@@ -42,22 +40,22 @@ public class UDPServer extends Thread{
     public static void main(String[] args) throws IOException {
         // Leer la entrada del usuario para determinar qué archivo enviar
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("¿Qué archivo desea enviar? (1 o 2)");
-        String fileChoice = reader.readLine();
+        // System.out.println("¿Qué archivo desea enviar? (1 o 2)");
+        // String fileChoice = reader.readLine();
         // String filename = "archivo" + fileChoice + ".txt";
-        String filename = "archivo_100Mb.txt";
+        UDPServer.filename = "archivo_100Mb.txt";
         
         // Configurar el socket UDP
         UDPServer.serverSocket = new DatagramSocket(46345);
-        byte[] sendData = new byte[1024];
+        UDPServer.sendData = new byte[1024];
         
         while (true) {
             // Esperar conexiones de clientes y enviar el archivo
-            byte[] receiveData = new byte[1024];
-            DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
+            byte[] receivData = new byte[1024];
+            DatagramPacket receivePacket = new DatagramPacket(receivData, receivData.length);
             serverSocket.receive(receivePacket);
 
-            UDPServer serverThread = new UDPServer(receivePacket,filename,sendData);
+            UDPServer serverThread = new UDPServer(receivePacket);
             serverThread.start();
             
         }
