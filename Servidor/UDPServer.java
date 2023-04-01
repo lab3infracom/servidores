@@ -34,6 +34,9 @@ public class UDPServer {
                 serverSocket.send(sendPacket);
             }
             fileInputStream.close();
+
+            DatagramPacket sendPacket = new DatagramPacket(new byte[0], 0, clientAddress, clientPort);
+            serverSocket.send(sendPacket);
         }
     }
 }
