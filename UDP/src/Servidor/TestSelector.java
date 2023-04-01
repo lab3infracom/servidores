@@ -1,4 +1,5 @@
 package Servidor;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -14,7 +15,7 @@ public class TestSelector {
         for (int i = 0; i < testFiles.length; i++) {
             System.out.println((i + 1) + ". " + testFiles[i]);
         }
-        
+
         // Prompt the user to select a test
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         int selection = -1;
@@ -26,12 +27,12 @@ public class TestSelector {
                 // Ignore and prompt again
             }
         }
-        
+
         // Run the selected test
-        String testFile = testFiles[selection - 1];
-        FileTransferServer server = new FileTransferServer(testFile);
-        server.start();
-        
+        String testFile = TESTS_DIR + testFiles[selection - 1];
+        FileTransferServer server = new FileTransferServer(4444);
+        server.receiveFile(testFile);
+
         // Wait for the server to finish
         try {
             server.join();

@@ -49,7 +49,9 @@ public class FileManager {
             String metadata = filename + "," + fileSize;
             byte[] metadataBytes = metadata.getBytes();
             packet = new DatagramPacket(metadataBytes, metadataBytes.length, clientAddress, 5000);
-            new DatagramSocket().send(packet);
+            DatagramSocket socket = new DatagramSocket();
+            socket.send(packet);
+            socket.close();
 
             // Send file fragments
             fragmentCount = 0;
@@ -63,8 +65,10 @@ public class FileManager {
                 }
                 fragmentCount++;
                 packet = new DatagramPacket(buffer, bytesRead, clientAddress, 5000);
-                new DatagramSocket().send(packet);
+                socket = new DatagramSocket();
+                socket.send(packet);
                 packetsSent++;
+                socket.close();
             }
             endTime = System.nanoTime();
 
@@ -95,11 +99,10 @@ public class FileManager {
     }
 
     public String[] listFiles() {
-    File directory = new File(filename);
-    if (!directory.isDirectory()) {
-        throw new IllegalArgumentException(filename + " is not a directory.");
+        File directory = new File(filename);
+        if (!directory.isDirectory()) {
+            throw new IllegalArgumentException(filename + " is not a directory.");
+        }
+        return directory.list();
     }
-    return directory.list();
-}
-
 }
