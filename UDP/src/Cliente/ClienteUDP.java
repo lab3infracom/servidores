@@ -21,7 +21,7 @@ public class ClienteUDP extends Thread {
     private static final int TAMANIO_CHUNK = 63488;
 
     // TODO: IP del servidor
-    private static final String IP_SERVIDOR = "192.168.5.119";
+    private static final String IP_SERVIDOR = "192.168.20.35";
 
     /************************************************* CONSTANTES ***********************************************/
 
@@ -62,9 +62,9 @@ public class ClienteUDP extends Thread {
             // Recibir respuesta del servidor
             int contador = 1;
             while (true) {
-                System.out.println(this.ID + "-Esperando paquete del servidor...");
+                // System.out.println(this.ID + "-Esperando paquete del servidor...");
                 clientSocket.receive(paqueteRecibido);
-                System.out.println(this.ID + "-Recibido paquete " + contador + " del servidor...");
+                // System.out.println(this.ID + "-Recibido paquete " + contador + " del servidor...");
                 outputFile.write(paqueteRecibido.getData(), 0, paqueteRecibido.getLength());
                 // System.out.println(paqueteRecibido.getLength() + " bytes recibidos, " + buffer.length + " bytes esperados");
                 contador++;
