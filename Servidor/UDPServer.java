@@ -52,7 +52,7 @@ public class UDPServer extends Thread{
             UDPServer.serverSocket.send(sendPacket);
             
             long tiempoTotal = tiempoFinal - tiempoInicio;
-            LOGGER.info("Tiempo de envio al cliente " + clientAddress + ":" + clientPort+ " fue de " + tiempoTotal + " ms");
+            LOGGER.info("Tiempo de envio del archivo al cliente (" + clientAddress + ":" + clientPort+ ") fue de " + tiempoTotal + " ms");
 
         } catch (IOException e) {
             System.out.println("Error Catch" + e.getMessage());
