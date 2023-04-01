@@ -14,6 +14,10 @@ public class FileTransferServer {
     public FileTransferServer(int port) {
         this.port = port;
     }
+    
+    public FileTransferServer(String fileName) {
+        this.fileName = fileName;
+    }
 
     public void start() {
         try {
@@ -83,5 +87,11 @@ public class FileTransferServer {
     private String getLogFileName() {
         String timeStamp = new java.text.SimpleDateFormat("yyyy-MM-dd-HH-mm-ss").format(new java.util.Date());
         return timeStamp + "-log.txt";
+    }
+
+    public void join() throws InterruptedException {
+        if (socket != null) {
+            socket.close();
+        }
     }
 }

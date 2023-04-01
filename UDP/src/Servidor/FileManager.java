@@ -5,59 +5,52 @@ import java.net.*;
 import java.util.*;
 
 public class FileManager {
-    private DatagramSocket socket;
-    private InetAddress address;
-    private int port;
-    private int fragmentSize;
     private String filename;
     private long fileSize;
     private ArrayList<InetAddress> clients;
-    
-    public FileManager(DatagramSocket socket, InetAddress address, int port, int fragmentSize) {
-        this.socket = socket;
-        this.address = address;
-        this.port = port;
-        this.fragmentSize = fragmentSize;
-        this.clients = new ArrayList<InetAddress>();
+
+    public FileManager(String filename) {
+        this.filename = filename;
+        this.clients = new ArrayList<>();
     }
-    
-    public void setFilename(String filename) throws FileNotFoundException {
+
+    public void setFileSize() throws FileNotFoundException {
         File file = new File(filename);
         if (!file.exists()) {
             throw new FileNotFoundException("File " + filename + " does not exist.");
         }
-        this.filename = filename;
         this.fileSize = file.length();
     }
-    
+
     public void addClient(InetAddress clientAddress) {
         clients.add(clientAddress);
     }
-    
+
     public void removeClient(InetAddress clientAddress) {
         clients.remove(clientAddress);
     }
-    
+
     public void sendFile() throws IOException {
+        int fragmentSize = 1024;
         byte[] buffer = new byte[fragmentSize];
         DatagramPacket packet;
         long startTime = 0;
         long endTime = 0;
         int fragmentCount = 0;
         int packetsSent = 0;
-        
+
         // Open the file
         FileInputStream fileInput = new FileInputStream(filename);
         BufferedInputStream bufferedInput = new BufferedInputStream(fileInput);
-        
+
         // Send the file to all connected clients
         for (InetAddress clientAddress : clients) {
             // Send file metadata
             String metadata = filename + "," + fileSize;
             byte[] metadataBytes = metadata.getBytes();
-            packet = new DatagramPacket(metadataBytes, metadataBytes.length, clientAddress, port);
-            socket.send(packet);
-            
+            packet = new DatagramPacket(metadataBytes, metadataBytes.length, clientAddress, 5000);
+            new DatagramSocket().send(packet);
+
             // Send file fragments
             fragmentCount = 0;
             packetsSent = 0;
@@ -69,21 +62,21 @@ public class FileManager {
                     break;
                 }
                 fragmentCount++;
-                packet = new DatagramPacket(buffer, bytesRead, clientAddress, port);
-                socket.send(packet);
+                packet = new DatagramPacket(buffer, bytesRead, clientAddress, 5000);
+                new DatagramSocket().send(packet);
                 packetsSent++;
             }
             endTime = System.nanoTime();
-            
+
             // Log transfer time for this client
             String logMessage = "Client: " + clientAddress.toString() + ", Fragments sent: " + fragmentCount + ", Packets sent: " + packetsSent + ", Time (ms): " + (endTime - startTime) / 1000000;
             logTransfer(logMessage);
         }
-        
+
         // Close the file
         bufferedInput.close();
     }
-    
+
     private void logTransfer(String message) {
         String logDirectory = "Logs";
         String logFilename = new Date().toString().replace(" ", "-").replace(":", "-") + "-log.txt";
@@ -100,4 +93,13 @@ public class FileManager {
             e.printStackTrace();
         }
     }
+
+    public String[] listFiles() {
+    File directory = new File(filename);
+    if (!directory.isDirectory()) {
+        throw new IllegalArgumentException(filename + " is not a directory.");
+    }
+    return directory.list();
+}
+
 }
