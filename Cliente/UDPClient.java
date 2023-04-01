@@ -28,7 +28,7 @@ public class UDPClient extends Thread {
             // Recibir el archivo del servidor
             DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
             clientSocket.receive(receivePacket);
-            String filename = "archivo_recibido" + ID + ".txt";
+            String filename = "Cliente/ArchivosRecibidos/archivo_recibido" + ID + ".txt";
             FileOutputStream fileOutputStream = new FileOutputStream(filename);
             
             while (receivePacket.getLength() > 0) {
