@@ -44,10 +44,10 @@ public class UDPServer extends Thread{
     public static void main(String[] args) throws IOException {
         // Leer la entrada del usuario para determinar qué archivo enviar
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        // System.out.println("¿Qué archivo desea enviar? (1 o 2)");
-        // String fileChoice = reader.readLine();
-        // String filename = "archivo" + fileChoice + ".txt";
-        UDPServer.filename = "archivo_100Mb.txt";
+        System.out.println("¿Qué archivo desea enviar? (100 o 250)");
+        String fileChoice = reader.readLine();
+        String filena = "archivo_" + fileChoice + "Mb.txt";
+        UDPServer.filename = filena;
         
         // Configurar el socket UDP
         UDPServer.serverSocket = new DatagramSocket(46345);
