@@ -21,7 +21,7 @@ public class ClienteUDP extends Thread {
     private static final int TAMANIO_CHUNK = 63488;
 
     // TODO: IP del servidor
-    private static final String IP_SERVIDOR = "192.168.5.119";
+    private static final String IP_SERVIDOR = "192.168.20.35";
 
     /************************************************* CONSTANTES ***********************************************/
 
