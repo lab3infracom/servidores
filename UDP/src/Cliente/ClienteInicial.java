@@ -19,6 +19,7 @@ public class ClienteInicial {
 
     /************************************************* MAIN ***********************************************/
     public static void main(String[] args) throws SecurityException, IOException {
+        System.out.println("INICIA");
         // Generar log
         int anioActual = LocalDate.now().getYear();
         int mesActual = LocalDate.now().getMonthValue();
@@ -26,8 +27,9 @@ public class ClienteInicial {
         int horaActual = LocalTime.now().getHour();
         int minutoActual = LocalTime.now().getMinute();
         int segundoActual = LocalTime.now().getSecond();
-        FileHandler fh = new FileHandler(DIRECTORIO_ARCHIVOS + "Logs/"+anioActual+"-"+mesActual+"-"+diaActual+"-"+horaActual+"-"+minutoActual+"-"+segundoActual+"-log.txt");
+        FileHandler fh = new FileHandler(DIRECTORIO_ARCHIVOS + "Logs/"+anioActual+"-"+mesActual+"-"+diaActual+"-"+horaActual+"-"+minutoActual+"-"+segundoActual+"-log.log");
         LOGGER.addHandler(fh);
+        System.out.println("Log Creado");
 
         // Obtener numero de clientes concurrentes
         System.out.println("--------------------------------------------------");
