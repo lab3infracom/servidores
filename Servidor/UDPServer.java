@@ -1,8 +1,6 @@
 import java.io.*;
 import java.net.*;
 
-import javax.sound.midi.Receiver;
-
 public class UDPServer extends Thread{
 
     private static DatagramSocket serverSocket;
@@ -37,7 +35,7 @@ public class UDPServer extends Thread{
             DatagramPacket sendPacket = new DatagramPacket(new byte[0], 0, clientAddress, clientPort);
             UDPServer.serverSocket.send(sendPacket);
         } catch (IOException e) {
-            // TODO: handle exception
+            System.out.println("Error Catch" + e.getMessage());
         }
     }
 
