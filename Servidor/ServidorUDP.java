@@ -42,10 +42,10 @@ public class ServidorUDP {
             byte[] datosRecibido = new byte[TAM_CHUNK];
             DatagramPacket paqueteRecibido = new DatagramPacket(datosRecibido, datosRecibido.length);
             socketServidor.receive(paqueteRecibido);
-            
             // Se establece la IP y el puerto del cliente que envió el paquete
             InetAddress direccionCliente = paqueteRecibido.getAddress();
             int PuertoCliente = paqueteRecibido.getPort();
+            System.out.println("Paquete recibido de " + direccionCliente + ":" + PuertoCliente + ".");
             
             ThreadServidorUDP threadServidorUDP = new ThreadServidorUDP(nomArchivo, socketServidor, sendData, direccionCliente, PuertoCliente);
             threadServidorUDP.start();
