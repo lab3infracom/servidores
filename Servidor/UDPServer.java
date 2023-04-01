@@ -7,7 +7,8 @@ public class UDPServer {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("¿Qué archivo desea enviar? (1 o 2)");
         String fileChoice = reader.readLine();
-        String filename = "archivo" + fileChoice + ".txt";
+        // String filename = "archivo" + fileChoice + ".txt";
+        String filename = "archivo_100Mb.txt";
         
         // Configurar el socket UDP
         DatagramSocket serverSocket = new DatagramSocket(5000);
