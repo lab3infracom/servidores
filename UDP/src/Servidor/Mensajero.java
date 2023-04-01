@@ -66,6 +66,7 @@ public class Mensajero extends Thread {
             while ((bytesLeidos = fileInputStream.read(datosEnviados)) != -1) {
                 DatagramPacket paqueteEnviado = new DatagramPacket(datosEnviados, bytesLeidos, IP_CLIENTE, PUERTO_CLIENTE);
                 SERVER_SOCKET.send(paqueteEnviado);
+                LOGGER.info("Mensajero" + this.ID + "- " + contador + " DATAGRAMAS ENVIADOS");
                 contador++;
             }
             fileInputStream.close();
