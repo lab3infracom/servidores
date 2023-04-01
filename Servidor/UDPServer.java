@@ -25,6 +25,7 @@ public class UDPServer {
             
             FileInputStream fileInputStream = new FileInputStream(filename);
             int fileSize = fileInputStream.available();
+            System.out.println("Tamanio archivo " + fileSize);
             int numReads = (int) Math.ceil((double) fileSize / (double) sendData.length);
             
             for (int i = 0; i < numReads; i++) {
