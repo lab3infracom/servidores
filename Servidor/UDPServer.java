@@ -11,7 +11,7 @@ public class UDPServer {
         String filename = "archivo_100Mb.txt";
         
         // Configurar el socket UDP
-        DatagramSocket serverSocket = new DatagramSocket(5000);
+        DatagramSocket serverSocket = new DatagramSocket(46345);
         byte[] sendData = new byte[1024];
         
         while (true) {
