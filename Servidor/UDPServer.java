@@ -35,7 +35,7 @@ public class UDPServer extends Thread{
             DatagramPacket sendPacket = new DatagramPacket(new byte[0], 0, clientAddress, clientPort);
             UDPServer.serverSocket.send(sendPacket);
         } catch (IOException e) {
-            // TODO: handle exception
+            // Imprimir
         }
     }
 
