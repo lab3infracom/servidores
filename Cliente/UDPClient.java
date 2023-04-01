@@ -5,7 +5,7 @@ import java.net.*;
 
 public class UDPClient extends Thread {
 
-    private static final String IP_SERVER = "192.168.20.35";
+    private static final String IP_SERVER = "192.168.152.117";
 
     private final int ID;
 
