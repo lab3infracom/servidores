@@ -78,7 +78,7 @@ public class UDPServer extends Thread{
         System.out.println("250. Archivo de 250MB");
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String fileChoice = reader.readLine();
-        UDPServer.filename = "archivo" + fileChoice + ".txt";
+        UDPServer.filename = "archivo" + fileChoice + "Mb.txt";
         System.out.println("--------------------------------------------------");
 
         // Configurar el socket UDP
