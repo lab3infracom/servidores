@@ -18,23 +18,27 @@ public class UDPServer extends Thread{
     }
 
     public void run() {
-        InetAddress clientAddress = receivePacket.getAddress();
-        int clientPort = receivePacket.getPort();
-
-        FileInputStream fileInputStream = new FileInputStream(filename);
-        int fileSize = fileInputStream.available();
-        System.out.println("Tamanio archivo " + fileSize);
-        int numReads = (int) Math.ceil((double) fileSize / (double) sendData.length);
-
-        for (int i = 0; i < numReads; i++) {
-            int bytesRead = fileInputStream.read(sendData);
-            DatagramPacket sendPacket = new DatagramPacket(sendData, bytesRead, clientAddress, clientPort);
+        try {
+            InetAddress clientAddress = receivePacket.getAddress();
+            int clientPort = receivePacket.getPort();
+    
+            FileInputStream fileInputStream = new FileInputStream(filename);
+            int fileSize = fileInputStream.available();
+            System.out.println("Tamanio archivo " + fileSize);
+            int numReads = (int) Math.ceil((double) fileSize / (double) sendData.length);
+    
+            for (int i = 0; i < numReads; i++) {
+                int bytesRead = fileInputStream.read(sendData);
+                DatagramPacket sendPacket = new DatagramPacket(sendData, bytesRead, clientAddress, clientPort);
+                UDPServer.serverSocket.send(sendPacket);
+            }
+            fileInputStream.close();
+    
+            DatagramPacket sendPacket = new DatagramPacket(new byte[0], 0, clientAddress, clientPort);
             UDPServer.serverSocket.send(sendPacket);
+        } catch (IOException e) {
+            // TODO: handle exception
         }
-        fileInputStream.close();
-
-        DatagramPacket sendPacket = new DatagramPacket(new byte[0], 0, clientAddress, clientPort);
-        UDPServer.serverSocket.send(sendPacket);
     }
 
     public static void main(String[] args) throws IOException {
