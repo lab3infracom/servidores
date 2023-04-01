@@ -12,7 +12,7 @@ public class ServidorUDP {
 
     private final static int PUERTO = 43215;
 
-    private static final int TAM_CHUNK = 1024;
+    private static final int TAM_CHUNK = 63488;
 
     public static void main(String[] args) throws IOException {
 
