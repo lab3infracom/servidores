@@ -39,7 +39,7 @@ public class ServidorUDP {
         int hora = LocalTime.now().getHour();
         int minuto = LocalTime.now().getMinute();
         int segundo = LocalTime.now().getSecond();
-        FileHandler fh = new FileHandler(DIRECTORIO_ARCHIVOS + "Logs/"+anio+"-"+mes+"-"+dia+"-"+hora+"-"+minuto+"-"+segundo+"-log.txt");
+        FileHandler fh = new FileHandler(DIRECTORIO_ARCHIVOS + "Logs/"+anio+"-"+mes+"-"+dia+"-"+hora+"-"+minuto+"-"+segundo+"-log.log");
         LOGGER.addHandler(fh);
         // Se obtiene el nombre del archivo que se va a transmitir
         System.out.println("--------------------------------------------------");
