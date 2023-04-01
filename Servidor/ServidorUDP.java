@@ -1,5 +1,3 @@
-package Servidor;
-
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -38,7 +36,7 @@ public class ServidorUDP {
         DatagramSocket socketServidor = new DatagramSocket(PUERTO);
         byte[] sendData = new byte[TAM_CHUNK];
         System.out.println("Servidor iniciado. Esperando conexiones...");
-        
+
         while (true) {
             // Esperar conexiones de clientes y enviar el archivo
             byte[] datosRecibido = new byte[TAM_CHUNK];
