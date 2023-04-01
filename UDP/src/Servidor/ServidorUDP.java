@@ -14,7 +14,7 @@ public class ServidorUDP {
     /************************************************* CONSTANTES ***********************************************/
 
     // Puerto para la conexion
-    private static final int PUERTO = 43215;
+    private static final int PUERTO = 6000;
 
     // Tamanio de un chunk (62KB)
     private static final int TAMANIO_CHUNK = 63488;

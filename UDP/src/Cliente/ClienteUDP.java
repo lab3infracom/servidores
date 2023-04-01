@@ -15,7 +15,7 @@ public class ClienteUDP extends Thread {
     private static final String DIRECTORIO_ARCHIVOS = "./src/Cliente/";
 
     // Puerto para la conexion
-    private static final int PUERTO = 43215;
+    private static final int PUERTO = 6000;
 
     // Tamanio de un chunk (62KB)
     private static final int TAMANIO_CHUNK = 63488;
@@ -62,9 +62,9 @@ public class ClienteUDP extends Thread {
             // Recibir respuesta del servidor
             int contador = 1;
             while (true) {
-                // System.out.println(this.ID + "-Esperando paquete del servidor...");
+                System.out.println(this.ID + "-Esperando paquete del servidor...");
                 clientSocket.receive(paqueteRecibido);
-                // System.out.println(this.ID + "-Recibido paquete " + contador + " del servidor...");
+                System.out.println(this.ID + "-Recibido paquete " + contador + " del servidor...");
                 outputFile.write(paqueteRecibido.getData(), 0, paqueteRecibido.getLength());
                 // System.out.println(paqueteRecibido.getLength() + " bytes recibidos, " + buffer.length + " bytes esperados");
                 contador++;
