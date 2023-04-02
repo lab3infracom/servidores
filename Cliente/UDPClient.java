@@ -5,7 +5,6 @@ import java.net.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.logging.FileHandler;
-import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 
 public class UDPClient extends Thread {

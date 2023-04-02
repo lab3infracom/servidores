@@ -21,6 +21,8 @@ public class UDPServer extends Thread{
 
     public static final int TAM_CHUNK = 1024;
 
+    public static final Buffer buffer = new Buffer();
+
     public UDPServer(DatagramPacket receivePacket) {
         this.receivePacket = receivePacket;
     }
@@ -28,6 +30,8 @@ public class UDPServer extends Thread{
     public void run() {
 
         try {
+            buffer.conectar();
+
             // Servidor
             InetAddress clientAddress = receivePacket.getAddress();
             int clientPort = receivePacket.getPort();
@@ -54,6 +58,7 @@ public class UDPServer extends Thread{
             long tiempoTotal = tiempoFinal - tiempoInicio;
             LOGGER.log(java.util.logging.Level.INFO, "Tiempo de envio del archivo al cliente (" + clientAddress + ":" + clientPort+ ") fue de " + tiempoTotal + " ms");
 
+            buffer.desconectar();
         } catch (IOException e) {
             System.out.println("Error Catch" + e.getMessage());
             LOGGER.warning("Error Catch" + e.getMessage());
@@ -96,7 +101,6 @@ public class UDPServer extends Thread{
 
             UDPServer serverThread = new UDPServer(receivePacket);
             serverThread.start();
-            
         }
     }
 }
