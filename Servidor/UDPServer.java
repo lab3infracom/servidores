@@ -103,7 +103,7 @@ public class UDPServer extends Thread{
             // Servidor
             InetAddress clientAddress = clientSocket.getLocalAddress();
             System.out.println("Cliente conectado: " + clientAddress + ":" + puerto);
-            
+            System.out.println(clientAddress + ":" + puerto + " solicita el archivo ");
             UDPServer serverThread = new UDPServer(clientAddress,puerto);
             serverThread.start();
 
