@@ -17,7 +17,9 @@ public class UDPServer extends Thread{
 
     private static final Logger LOGGER = Logger.getLogger("LOG");
 
-    public static final int PUERTO_SERVIDOR = 46345;
+    public static final int PUERTO_TCP_SERVIDOR = 46345;
+
+    public static final int PUERTO_UDP_SERVIDOR = 46346;
 
     public static final int TAM_CHUNK = 1024;
 
@@ -57,7 +59,7 @@ public class UDPServer extends Thread{
             UDPServer.serverSocket.send(sendPacket);
             
             long tiempoTotal = tiempoFinal - tiempoInicio;
-            LOGGER.log(java.util.logging.Level.INFO, "[FIN] Tiempo de envio del archivo al cliente (" + clientAddress + ":" + clientPort+ ") fue de " + tiempoTotal + " ms");
+            LOGGER.log(java.util.logging.Level.INFO, "[FIN] Tiempo de envio del archivo" + filename + " al cliente (" + clientAddress + ":" + clientPort+ ") fue de " + tiempoTotal + " ms");
 
             buffer.desconectar();
         } catch (IOException e) {
@@ -78,24 +80,23 @@ public class UDPServer extends Thread{
         fh.setFormatter(new CustomFormatter());
         LOGGER.addHandler(fh);
 
-        buffer.getLog(LOGGER);
-
-        //TODO: Se obtiene del cliente el archivo a enviar y además se debe especificar en el log el nombre del archivo
-        // Leer la entrada del usuario para determinar qué archivo enviar
-        System.out.println("--------------------------------------------------");
-        System.out.println("ESCOJA EL ARCHIVO QUE QUIERE TRANSMITIR");
-        System.out.println("100. Archivo de 100MB");
-        System.out.println("250. Archivo de 250MB");
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        String fileChoice = reader.readLine();
-        UDPServer.filename = "archivo_" + fileChoice + "Mb.txt";
-        System.out.println("--------------------------------------------------");
+        buffer.getLog(LOGGER);        
 
         // Configurar el socket UDP
-        UDPServer.serverSocket = new DatagramSocket(PUERTO_SERVIDOR);
+        UDPServer.serverSocket = new DatagramSocket(PUERTO_UDP_SERVIDOR);
         UDPServer.sendData = new byte[TAM_CHUNK];
         
         while (true) {
+
+            //Obtener en TCP el nombre del archivo a enviar
+            ServerSocket serverSocketTCP = new ServerSocket(PUERTO_TCP_SERVIDOR);
+            Socket clientSocket = serverSocketTCP.accept();
+            BufferedReader input = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+            filename = input.readLine();
+            input.close();
+            clientSocket.close();
+            serverSocketTCP.close();
+
             // Esperar conexiones de clientes y enviar el archivo
             byte[] receivData = new byte[TAM_CHUNK];
             DatagramPacket receivePacket = new DatagramPacket(receivData, receivData.length);
