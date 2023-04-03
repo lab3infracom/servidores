@@ -96,15 +96,17 @@ public class UDPServer extends Thread{
             ServerSocket serverSocketTCP = new ServerSocket(PUERTO_TCP_SERVIDOR);
             Socket clientSocket = serverSocketTCP.accept();
             BufferedReader input = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-            filename = input.readLine();
+            String[] data = input.readLine().split(",");
+            filename = data[0];
+            int puerto = Integer.parseInt(data[1]);
+
             LOGGER.log(java.util.logging.Level.INFO, "[INFO] solicitud de conexion recibida");
             
             // Servidor
             InetAddress clientAddress = clientSocket.getLocalAddress();
-            int clientPort = clientSocket.getPort();
-            System.out.println("Cliente conectado: " + clientAddress + ":" + clientPort);
+            System.out.println("Cliente conectado: " + clientAddress + ":" + puerto);
             
-            UDPServer serverThread = new UDPServer(clientAddress,clientPort);
+            UDPServer serverThread = new UDPServer(clientAddress,puerto);
             serverThread.start();
 
             input.close();
