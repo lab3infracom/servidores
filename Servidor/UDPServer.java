@@ -21,7 +21,7 @@ public class UDPServer extends Thread{
 
     public static final int TAM_CHUNK = 1024;
 
-    public static final Buffer buffer = new Buffer();
+    public static Buffer buffer = new Buffer();
 
     public UDPServer(DatagramPacket receivePacket) {
         this.receivePacket = receivePacket;
