@@ -88,6 +88,8 @@ public class UDPServer extends Thread{
         
         while (true) {
 
+            System.out.println("Esperando conexiones...");
+
             //Obtener en TCP el nombre del archivo a enviar
             ServerSocket serverSocketTCP = new ServerSocket(PUERTO_TCP_SERVIDOR);
             Socket clientSocket = serverSocketTCP.accept();
@@ -101,7 +103,6 @@ public class UDPServer extends Thread{
             byte[] receivData = new byte[TAM_CHUNK];
             DatagramPacket receivePacket = new DatagramPacket(receivData, receivData.length);
 
-            System.out.println("Esperando conexiones...");
             serverSocket.receive(receivePacket);
             LOGGER.log(java.util.logging.Level.INFO, "[INICIO] solicitud de conexion recibida");
             UDPServer serverThread = new UDPServer(receivePacket);

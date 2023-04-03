@@ -42,7 +42,7 @@ public class UDPClient extends Thread {
             socket.close();
 
             // Configurar el socket UDP
-            LOGGER.log(java.util.logging.Level.INFO, "[INFO] Cliente " + ID + " iniciado");
+            LOGGER.log(java.util.logging.Level.INFO, "[INICIO] Cliente " + ID + " iniciado");
             DatagramSocket clientSocket = new DatagramSocket();
             byte[] receiveData = new byte[TAM_CHUNK];
             
@@ -51,15 +51,15 @@ public class UDPClient extends Thread {
             DatagramPacket sendPacket = new DatagramPacket(new byte[0], 0, serverAddress, PUERTO_UDP_SERVIDOR);
             clientSocket.send(sendPacket);
             
-            // Recibir el archivo del servidor
             DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
             clientSocket.receive(receivePacket);
             long tiempoInicio = System.currentTimeMillis();
-            LOGGER.log(java.util.logging.Level.INFO, "[INFO] Cliente " + ID + " Conexion establecida con el servidor");
-
+            LOGGER.log(java.util.logging.Level.INFO, "[INFO] Cliente " + ID + " - Conexion establecida con el servidor");
+            
             String filename = DIR_ARCHIVOS + "ArchivosRecibidos/" + ID + "-Prueba-" + numClients + ".txt";
             FileOutputStream fileOutputStream = new FileOutputStream(filename);
             
+            // Recibir el archivo del servidor
             int tamanio = receivePacket.getLength();
             while (receivePacket.getLength() > 0) {
                 fileOutputStream.write(receivePacket.getData(), 0, receivePacket.getLength());
@@ -70,7 +70,7 @@ public class UDPClient extends Thread {
             long tiempoFinal = System.currentTimeMillis();
 
             long tiempoTotal = tiempoFinal - tiempoInicio;
-            LOGGER.log(java.util.logging.Level.INFO, "[INFO] Cliente " + ID + " Tiempo de recepcion del archivo" + filename + "(" + tamanio + " bytes) fue de " + tiempoTotal + " ms");
+            LOGGER.log(java.util.logging.Level.INFO, "[FIN] Cliente " + ID + " - Tiempo de recepcion del archivo" + filename + "(" + tamanio + " bytes) fue de " + tiempoTotal + " ms");
             
             fileOutputStream.close();
             clientSocket.close();
