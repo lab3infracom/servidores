@@ -102,6 +102,7 @@ public class UDPServer extends Thread{
             // Servidor
             InetAddress clientAddress = clientSocket.getLocalAddress();
             int clientPort = clientSocket.getPort();
+            System.out.println("Cliente conectado: " + clientAddress + ":" + clientPort);
             
             UDPServer serverThread = new UDPServer(clientAddress,clientPort);
             serverThread.start();
