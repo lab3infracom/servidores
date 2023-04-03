@@ -60,7 +60,8 @@ public class UDPClient extends Thread {
             long tiempoFinal = System.currentTimeMillis();
 
             long tiempoTotal = tiempoFinal - tiempoInicio;
-            LOGGER.log(java.util.logging.Level.INFO, "[INFO] Cliente " + ID + " Tiempo de recepcion del archivo (" + tamanio + " bytes) fue de " + tiempoTotal + " ms");
+            String nombreArchivo = ""; //TODO: Obtener el nombre del archivo
+            LOGGER.log(java.util.logging.Level.INFO, "[INFO] Cliente " + ID + " Tiempo de recepcion del archivo" +nombreArchivo+ "(" + tamanio + " bytes) fue de " + tiempoTotal + " ms");
             
             fileOutputStream.close();
             clientSocket.close();

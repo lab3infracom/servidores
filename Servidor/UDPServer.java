@@ -57,7 +57,7 @@ public class UDPServer extends Thread{
             UDPServer.serverSocket.send(sendPacket);
             
             long tiempoTotal = tiempoFinal - tiempoInicio;
-            LOGGER.log(java.util.logging.Level.INFO, "[INFO] Tiempo de envio del archivo al cliente (" + clientAddress + ":" + clientPort+ ") fue de " + tiempoTotal + " ms");
+            LOGGER.log(java.util.logging.Level.INFO, "[FIN] Tiempo de envio del archivo al cliente (" + clientAddress + ":" + clientPort+ ") fue de " + tiempoTotal + " ms");
 
             buffer.desconectar();
         } catch (IOException e) {
@@ -80,6 +80,7 @@ public class UDPServer extends Thread{
 
         buffer.getLog(LOGGER);
 
+        //TODO: Se obtiene del cliente el archivo a enviar y además se debe especificar en el log el nombre del archivo
         // Leer la entrada del usuario para determinar qué archivo enviar
         System.out.println("--------------------------------------------------");
         System.out.println("ESCOJA EL ARCHIVO QUE QUIERE TRANSMITIR");
@@ -101,7 +102,7 @@ public class UDPServer extends Thread{
 
             System.out.println("Esperando conexiones...");
             serverSocket.receive(receivePacket);
-
+            LOGGER.log(java.util.logging.Level.INFO, "[INICIO] solicitud de conexion recibida");
             UDPServer serverThread = new UDPServer(receivePacket);
             serverThread.start();
         }
