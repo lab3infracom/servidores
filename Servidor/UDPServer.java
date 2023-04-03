@@ -9,8 +9,6 @@ public class UDPServer extends Thread{
 
     private static DatagramSocket serverSocket;
 
-    private DatagramPacket receivePacket;
-
     private static String filename;
 
     private static byte[] sendData;
@@ -30,8 +28,8 @@ public class UDPServer extends Thread{
     public int PUERTO_CLIENTE;
 
     public UDPServer(InetAddress clientAddress, int clientPort) {
-        IP_CLIENTE = receivePacket.getAddress();
-        PUERTO_CLIENTE = receivePacket.getPort();
+        IP_CLIENTE = clientAddress;
+        PUERTO_CLIENTE = clientPort;
     }
 
     public void run() {
