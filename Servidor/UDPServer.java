@@ -35,11 +35,12 @@ public class UDPServer extends Thread{
             // Servidor
             InetAddress clientAddress = receivePacket.getAddress();
             int clientPort = receivePacket.getPort();
+            String clientePrt = clientAddress + ":" + clientPort;
     
             FileInputStream fileInputStream = new FileInputStream(filename);
             int fileSize = fileInputStream.available();
-            System.out.println("Enviando archivo " + filename + " (" + fileSize + " bytes) al cliente " + clientAddress + ":" + clientPort);
-            LOGGER.log(java.util.logging.Level.INFO, "Enviando archivo " + filename + " (" + fileSize + " bytes) al cliente " + clientAddress + ":" + clientPort);
+            System.out.println("Enviando archivo " + filename + " (" + fileSize + " bytes) al cliente " + clientePrt);
+            LOGGER.log(java.util.logging.Level.INFO, "[INFO] Enviando archivo " + filename + " (" + fileSize + " bytes) al cliente " + clientePrt);
             int numReads = (int) Math.ceil((double) fileSize / (double) sendData.length);
     
             long tiempoInicio = System.currentTimeMillis();
@@ -56,12 +57,12 @@ public class UDPServer extends Thread{
             UDPServer.serverSocket.send(sendPacket);
             
             long tiempoTotal = tiempoFinal - tiempoInicio;
-            LOGGER.log(java.util.logging.Level.INFO, "Tiempo de envio del archivo al cliente (" + clientAddress + ":" + clientPort+ ") fue de " + tiempoTotal + " ms");
+            LOGGER.log(java.util.logging.Level.INFO, "[INFO] Tiempo de envio del archivo al cliente (" + clientAddress + ":" + clientPort+ ") fue de " + tiempoTotal + " ms");
 
             buffer.desconectar();
         } catch (IOException e) {
             System.out.println("Error Catch" + e.getMessage());
-            LOGGER.warning("Error Catch" + e.getMessage());
+            LOGGER.warning("[ERROR] Catch" + e.getMessage());
         }
     }
 
@@ -76,6 +77,8 @@ public class UDPServer extends Thread{
         FileHandler fh = new FileHandler("Logs/"+anio+"-"+mes+"-"+dia+"-"+hora+"-"+minuto+"-"+segundo+"-log.log");
         fh.setFormatter(new CustomFormatter());
         LOGGER.addHandler(fh);
+
+        buffer.getLog(LOGGER);
 
         // Leer la entrada del usuario para determinar qué archivo enviar
         System.out.println("--------------------------------------------------");
