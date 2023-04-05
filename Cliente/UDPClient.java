@@ -11,7 +11,7 @@ public class UDPClient extends Thread {
 
     private static final Logger LOGGER = Logger.getLogger("LOG");
 
-    private static final String IP_SERVER = "192.168.152.117";
+    private static final String IP_SERVER = "192.168.1.112";
 
     public static final int PUERTO_SERVIDOR = 46345;
 
