@@ -7,7 +7,7 @@ import java.util.logging.Logger;
 
 public class UDPServer extends Thread{
 
-    private static DatagramSocket serverSocket;
+    private static DatagramSocket socketUDP;
 
     private DatagramPacket receivePacket;
 
@@ -17,13 +17,18 @@ public class UDPServer extends Thread{
 
     private static final Logger LOGGER = Logger.getLogger("LOG");
 
-    public static final int PUERTO_SERVIDOR = 46345;
+    public static final int PUERTO_SERVIDOR_TCP = 46345;
+
+    public static final int PUERTO_SERVIDOR_UDP = 46346;
+
+    public final int PUERTO_CLIENTE_UDP;
 
     public static final int TAM_CHUNK = 1024;
 
     public static Buffer buffer = new Buffer();
 
-    public UDPServer(DatagramPacket receivePacket) {
+    public UDPServer(DatagramPacket receivePacket, int puertoClienteUDP) {
+        this.PUERTO_CLIENTE_UDP = puertoClienteUDP;
         this.receivePacket = receivePacket;
     }
 
@@ -47,14 +52,14 @@ public class UDPServer extends Thread{
             for (int i = 0; i < numReads; i++) {
                 int bytesRead = fileInputStream.read(sendData);
                 DatagramPacket sendPacket = new DatagramPacket(sendData, bytesRead, clientAddress, clientPort);
-                UDPServer.serverSocket.send(sendPacket);
+                socketUDP.send(sendPacket);
             }
             long tiempoFinal = System.currentTimeMillis();
             fileInputStream.close();
             
             // Se envia un paquete vacio para indicar que se termino de enviar el archivo
             DatagramPacket sendPacket = new DatagramPacket(new byte[0], 0, clientAddress, clientPort);
-            UDPServer.serverSocket.send(sendPacket);
+            socketUDP.send(sendPacket);
             
             long tiempoTotal = tiempoFinal - tiempoInicio;
             LOGGER.log(java.util.logging.Level.INFO, "[FIN] Tiempo de envio del archivo al cliente (" + clientAddress + ":" + clientPort+ ") fue de " + tiempoTotal + " ms");
@@ -79,32 +84,33 @@ public class UDPServer extends Thread{
         LOGGER.addHandler(fh);
 
         buffer.getLog(LOGGER);
-
-        //TODO: Se obtiene del cliente el archivo a enviar y además se debe especificar en el log el nombre del archivo
-        // Leer la entrada del usuario para determinar qué archivo enviar
-        System.out.println("--------------------------------------------------");
-        System.out.println("ESCOJA EL ARCHIVO QUE QUIERE TRANSMITIR");
-        System.out.println("100. Archivo de 100MB");
-        System.out.println("250. Archivo de 250MB");
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        String fileChoice = reader.readLine();
-        UDPServer.filename = "archivo_" + fileChoice + "Mb.txt";
-        System.out.println("--------------------------------------------------");
-
+        
         // Configurar el socket UDP
-        UDPServer.serverSocket = new DatagramSocket(PUERTO_SERVIDOR);
+        ServerSocket socketTCP = new ServerSocket(PUERTO_SERVIDOR_TCP);
+        DatagramSocket socketUDP = new DatagramSocket(PUERTO_SERVIDOR_UDP);
         UDPServer.sendData = new byte[TAM_CHUNK];
         
+        // Creamos un socket de servidor TCP
+        Socket conexionTCP = socketTCP.accept();
+        BufferedReader entradaTCP = new BufferedReader(new InputStreamReader(conexionTCP.getInputStream()));
+        String fileChoice = entradaTCP.readLine();
+        filename = "archivo_" + fileChoice + "Mb.txt";
+        
         while (true) {
+            
+            int puertoClienteUDP = Integer.parseInt(entradaTCP.readLine());
+            
             // Esperar conexiones de clientes y enviar el archivo
             byte[] receivData = new byte[TAM_CHUNK];
             DatagramPacket receivePacket = new DatagramPacket(receivData, receivData.length);
-
+            
             System.out.println("Esperando conexiones...");
-            serverSocket.receive(receivePacket);
+            socketUDP.receive(receivePacket);
             LOGGER.log(java.util.logging.Level.INFO, "[INICIO] solicitud de conexion recibida");
-            UDPServer serverThread = new UDPServer(receivePacket);
+            UDPServer serverThread = new UDPServer(receivePacket, puertoClienteUDP);
             serverThread.start();
+            
         }
+
     }
 }

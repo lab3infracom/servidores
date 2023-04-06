@@ -13,7 +13,9 @@ public class UDPClient extends Thread {
 
     private static final String IP_SERVER = "192.168.1.112";
 
-    public static final int PUERTO_SERVIDOR = 46345;
+    public static final int PUERTO_SERVIDOR_TCP = 46345;
+
+    public static final int PUERTO_SERVIDOR_UDP = 46346;
 
     public static final int TAM_CHUNK = 1024;
 
@@ -31,21 +33,27 @@ public class UDPClient extends Thread {
 
     public void run() {
         try {
-
+            
             LOGGER.log(java.util.logging.Level.INFO, "[INICIO] Cliente " + ID + " iniciado");
-
+            
             // Configurar el socket UDP
-            DatagramSocket clientSocket = new DatagramSocket();
+            DatagramSocket socketUDP = new DatagramSocket();
             byte[] receiveData = new byte[TAM_CHUNK];
+            
+            Socket socketTCP = new Socket(IP_SERVER, PUERTO_SERVIDOR_TCP);
+            OutputStream os = socketTCP.getOutputStream();
+            DataOutputStream dos = new DataOutputStream(os);
+            dos.writeInt(socketUDP.getLocalPort());
+            dos.flush();
             
             // Conectarse al servidor
             InetAddress serverAddress = InetAddress.getByName(IP_SERVER);
-            DatagramPacket sendPacket = new DatagramPacket(new byte[0], 0, serverAddress, PUERTO_SERVIDOR);
-            clientSocket.send(sendPacket);
+            DatagramPacket sendPacket = new DatagramPacket(new byte[0], 0, serverAddress, PUERTO_SERVIDOR_UDP);
+            socketUDP.send(sendPacket);
             
             // Recibir el archivo del servidor
             DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
-            clientSocket.receive(receivePacket);
+            socketUDP.receive(receivePacket);
             long tiempoInicio = System.currentTimeMillis();
             LOGGER.log(java.util.logging.Level.INFO, "[INFO] Cliente " + ID + " Conexion establecida con el servidor");
 
@@ -57,7 +65,7 @@ public class UDPClient extends Thread {
                 fileOutputStream.write(receivePacket.getData(), 0, receivePacket.getLength());
                 receivePacket = new DatagramPacket(receiveData, receiveData.length);
                 tamanio += receivePacket.getLength();
-                clientSocket.receive(receivePacket);
+                socketUDP.receive(receivePacket);
             }
             long tiempoFinal = System.currentTimeMillis();
 
@@ -65,7 +73,7 @@ public class UDPClient extends Thread {
             LOGGER.log(java.util.logging.Level.INFO, "[FIN] Cliente " + ID + " Tiempo de recepcion del archivo" +nombreArchivo+ "(" + tamanio + " bytes) fue de " + tiempoTotal + " ms");
             
             fileOutputStream.close();
-            clientSocket.close();
+            socketUDP.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -98,6 +106,12 @@ public class UDPClient extends Thread {
         numClients =  Integer.parseInt(reader.readLine());
         System.out.println("--------------------------------------------------");
         
+        Socket socketTCP = new Socket(IP_SERVER, PUERTO_SERVIDOR_TCP);
+        OutputStream os = socketTCP.getOutputStream();
+        DataOutputStream dos = new DataOutputStream(os);
+        dos.writeUTF(nombreArchivo);
+        dos.flush();
+
         // Iniciar tantos hilos de cliente como se indique en la entrada del usuario.
         for (int i = 1; i <= numClients; i++) {
             UDPClient client = new UDPClient(i);
