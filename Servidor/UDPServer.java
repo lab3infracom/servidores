@@ -95,11 +95,13 @@ public class UDPServer extends Thread{
         BufferedReader entradaTCP = new BufferedReader(new InputStreamReader(conexionTCP.getInputStream()));
         String fileChoice = entradaTCP.readLine();
         filename = "archivo_" + fileChoice + "Mb.txt";
+        System.out.println("El servidor recibio que se quiere recibir el archivo: " + filename);
         
         while (true) {
             
             int puertoClienteUDP = Integer.parseInt(entradaTCP.readLine());
-            
+            System.out.println("El servidor recibio que un cliente quiere recibir el archivo en el puerto: " + puertoClienteUDP);
+
             // Esperar conexiones de clientes y enviar el archivo
             byte[] receivData = new byte[TAM_CHUNK];
             DatagramPacket receivePacket = new DatagramPacket(receivData, receivData.length);
