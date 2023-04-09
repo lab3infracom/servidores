@@ -1,1 +1,0 @@
-Este archivo tiene como objetivo mantener la carpeta al hacer commit aunque no haya logs o archivos.
