@@ -21,8 +21,6 @@ public class UDPClient extends Thread {
 
     public static int numClients;
 
-    public static String nombreArchivo;
-
     private final int ID;
 
     public UDPClient(int id) {
@@ -32,7 +30,7 @@ public class UDPClient extends Thread {
     public void run() {
         try {
 
-            LOGGER.log(java.util.logging.Level.INFO, "[INICIO] Cliente " + ID + " iniciado");
+            LOGGER.log(java.util.logging.Level.INFO, "[INFO] Cliente " + ID + " iniciado");
 
             // Configurar el socket UDP
             DatagramSocket clientSocket = new DatagramSocket();
@@ -62,7 +60,8 @@ public class UDPClient extends Thread {
             long tiempoFinal = System.currentTimeMillis();
 
             long tiempoTotal = tiempoFinal - tiempoInicio;
-            LOGGER.log(java.util.logging.Level.INFO, "[FIN] Cliente " + ID + " Tiempo de recepcion del archivo" +nombreArchivo+ "(" + tamanio + " bytes) fue de " + tiempoTotal + " ms");
+            String nombreArchivo = ""; //TODO: Obtener el nombre del archivo
+            LOGGER.log(java.util.logging.Level.INFO, "[INFO] Cliente " + ID + " Tiempo de recepcion del archivo" +nombreArchivo+ "(" + tamanio + " bytes) fue de " + tiempoTotal + " ms");
             
             fileOutputStream.close();
             clientSocket.close();
@@ -83,18 +82,10 @@ public class UDPClient extends Thread {
         fh.setFormatter(new CustomFormatter());
         LOGGER.addHandler(fh);
         
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        // Leer la entrada del usuario para determinar qué archivo enviar
-        System.out.println("--------------------------------------------------");
-        System.out.println("ESCOJA EL ARCHIVO QUE QUIERE TRANSMITIR");
-        System.out.println("100. Archivo de 100MB");
-        System.out.println("250. Archivo de 250MB");
-        String fileChoice = reader.readLine();
-        nombreArchivo = "archivo_" + fileChoice + "Mb.txt";
-        System.out.println("--------------------------------------------------");
         // Leer la entrada del usuario para determinar el número de clientes concurrentes
         System.out.println("--------------------------------------------------");
         System.out.println("CLIENTES QUE SE QUIEREN EJECUTAR");
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         numClients =  Integer.parseInt(reader.readLine());
         System.out.println("--------------------------------------------------");
         
