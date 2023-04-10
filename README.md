@@ -70,7 +70,7 @@
 
 5. Introducir en la terminal el numero de clientes (conexiones simultaneas) que se quiere ejecutar.
 
-# Resultado UDP
+### Resultado UDP
 
 - [En la MV] Si detiene el programa del servidor, ejecutando el comando `cd Logs` puede acceder a los logs de la ejecución del servidor. Se aclara que el servidor no se detiene de manera automatica ya que está siempre disponible esperando conexiones por parte de clientes.
 
