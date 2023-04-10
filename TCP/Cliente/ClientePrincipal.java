@@ -14,13 +14,12 @@ public class ClientePrincipal {
         int minutoActual = LocalTime.now().getMinute();
         int segundoActual = LocalTime.now().getSecond();
         FileHandler fh = new FileHandler("Logs/"+anioActual+"-"+mesActual+"-"+diaActual+"-"+horaActual+"-"+minutoActual+"-"+segundoActual+"-log.log");
+        fh.setFormatter(new CustomFormatter());
         LOGGER.addHandler(fh);
-            
 
         Scanner myObj = new Scanner(System.in);  
         System.out.println("Ingrese la cantidad de clientes que va a conectar");
         int numclientes = Integer.parseInt(myObj.nextLine());
-        
         
         for(int i = 0; i<numclientes; i++)
         {

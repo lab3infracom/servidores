@@ -29,12 +29,14 @@ public class ClienteTCP extends Thread{
             try {
                 DataInputStream dis = new DataInputStream(clienteSocket.getInputStream());
                 DataOutputStream dos = new DataOutputStream(clienteSocket.getOutputStream());
-                dos.writeUTF("MENSAJE DE CONFIRMACION DE CONEXION");
+                dos.writeUTF("MENSAJE DE CONFIRMACION DE CONEXION\n");
                 dos.flush();
                 int longitud = dis.readInt();
                 byte[] buffer = new byte[longitud];
                 int size = buffer.length;
-                LOGGER.info("Tamaño del archivo: " + size + " bytes");
+                LOGGER.info("El tamaño del archivo enviado es: " + size + " bytes\n");
+                LOGGER.info("El nombre del archivo enviado es: " + "Archivo"+id+"Prueba"+numclientes+".txt");
+                LOGGER.info("El cliente al que se envía el archivo es: " + clienteSocket.getInetAddress().getHostAddress() + "\n");
                 dis.readFully(buffer, 0, longitud);
                 MessageDigest md;
                 try {
@@ -45,39 +47,34 @@ public class ClienteTCP extends Thread{
                         sb.append(Integer.toString((hashBytes[i] & 0xff) + 0x100, 16).substring(1));
                     }
                     String hashString = sb.toString().toUpperCase();
-                    System.out.println("EL HASH CALCULADO ES: "+hashString);
-                    
+                    LOGGER.info("El hash calculado del archivo es: " + hashString + "\n");
                     String codhash = dis.readUTF();
-                    System.out.println("EL HASH RECIBIDO FUE: "+codhash);
+                    LOGGER.info("El hash recibido del archivo es: " + codhash + "\n");
                     if(hashString.equals(codhash))
                     {
-                        System.out.println("EL ARCHIVO FUE RECIBIDO CORRECTAMENTE");
-                        LOGGER.info("EL ARCHIVO FUE RECIBIDO CORRECTAMENTE");
+                        LOGGER.info("El archivo fue recibido correctamente" + "\n");
                         long tiempoFinal = System.currentTimeMillis();
                         long tiempoTotal = tiempoFinal - tiempoInicio;
-                        System.out.println("EL TIEMPO TOTAL DE DESCARGA FUE: "+tiempoTotal+" milisegundos");
-                        LOGGER.info("EL TIEMPO TOTAL DE DESCARGA FUE: "+tiempoTotal+" milisegundos");
+                        LOGGER.info("El tiempo total de transferencia del archivo fue: "+tiempoTotal+" milisegundos" + "\n");
                     }
                     else
                     {
-                        System.out.println("EL ARCHIVO FUE RECIBIDO INCORRECTAMENTE");
-                        LOGGER.info("EL ARCHIVO FUE RECIBIDO INCORRECTAMENTE");
+                        LOGGER.info("El archivo no fue recibido correctamente" + "\n");
                     }
                 } catch (NoSuchAlgorithmException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
                 
-                try (FileOutputStream fos = new FileOutputStream("ArchivosRecibidos/Cliente"+id+"Prueba"+numclientes+".txt")) {
+                try (FileOutputStream fos = new FileOutputStream("ArchivosRecibidos/"+"Archivo"+id+"Prueba"+numclientes+".txt")) {
                     fos.write(buffer);
                 } catch (IOException e) {
-                    System.out.println("Error al escribir el archivo recibido: " + e.getMessage());
+                    LOGGER.info("Error al escribir el archivo recibido: " + e.getMessage());
                 }
             } catch (IOException e) {
-                System.out.println("Error al recibir el archivo: " + e.getMessage());
+                LOGGER.info("Error al recibir el archivo: " + e.getMessage());
             }
         } catch (IOException e) {
-            System.out.println("Error al conectar con el servidor: " + e.getMessage());
+            LOGGER.info("Error al conectar con el servidor: " + e.getMessage());
         }
         finally {
             //clienteSocket.close();

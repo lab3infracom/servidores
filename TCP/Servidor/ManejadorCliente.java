@@ -14,10 +14,10 @@ public class ManejadorCliente implements Runnable {
     private Socket clienteSocket;
     private int numarchivo;
     private int conexiones;
-    private Buffer mibuffer;
+    private BufferTCP mibuffer;
     private static Logger logger;
 
-    public ManejadorCliente(Socket clienteSocket, int archivo,  Buffer mibuffer, int conexiones, Logger logger) {
+    public ManejadorCliente(Socket clienteSocket, int archivo,  BufferTCP mibuffer, int conexiones, Logger logger) {
         this.clienteSocket = clienteSocket;
         this.numarchivo = archivo;
         this.conexiones = conexiones;
@@ -28,37 +28,39 @@ public class ManejadorCliente implements Runnable {
     public void run() {
         try {
             long tiempoInicio = System.currentTimeMillis();
-            logger.info("---IDENTIFICADOR DEL CLIENTE: " + this.clienteSocket+"---");
+            logger.info("---IDENTIFICADOR DEL CLIENTE: " + this.clienteSocket + "---");
             logger.info("Conexión establecida con el servidor " + clienteSocket.getInetAddress().getHostAddress() + ":" + clienteSocket.getPort());
-            File archivo = new File("archivo_100Mb.txt");
-            MessageDigest md=MessageDigest.getInstance("SHA-256");
-            if(this.numarchivo==1){
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            File archivo = null;
+            String nombreArchivo = "";
+            long tamanoArchivo = 0;
+            if(this.numarchivo == 1){
                 archivo = new File("archivo_100Mb.txt");
-                logger.info("SE HA ENVIADO EL ARCHIVO DE NOMBRE: archivo_100Mb.txt");
-                logger.info("SE HA ENVIADO EL ARCHIVO DE TAMAÑO: "+archivo.length()+" bytes");
+                nombreArchivo = "archivo_100Mb.txt";
+                tamanoArchivo = archivo.length();
             }
             else{
                 archivo = new File("archivo_250Mb.txt");
-                logger.info("SE HA ENVIADO EL ARCHIVO DE NOMBRE: archivo_250Mb.txt");
-                logger.info("SE HA ENVIADO EL ARCHIVO DE TAMAÑO: "+archivo.length()+" bytes");
+                nombreArchivo = "archivo_250Mb.txt";
+                tamanoArchivo = archivo.length();
             }
+            logger.info("Se envía el archivo " + nombreArchivo + " de tamaño " + tamanoArchivo + " bytes");
             byte[] buffer = new byte[(int) archivo.length()];
             try (FileInputStream fis = new FileInputStream(archivo)) {
                 fis.read(buffer);
                 md.update(buffer, 0, (int) archivo.length());
-                logger.info("--TAMAÑO ARCHIVO: "+archivo.length()+" bytes--");
+                logger.info("Archivo " + nombreArchivo + " leído correctamente");
             } catch (IOException e) {
-                System.out.println("Error al leer el archivo: " + e.getMessage());
-                logger.info("--NO TUVO EXITO LA CONEXION--");
-                logger.info("Error al leer el archivo: " + e.getMessage());
-
+                logger.info("Error al leer el archivo " + nombreArchivo + ": " + e.getMessage());
+                logger.info("La conexión no tuvo éxito");
+                return;
             }
             try {
                 DataOutputStream dos = new DataOutputStream(clienteSocket.getOutputStream());
                 DataInputStream dis = new DataInputStream(clienteSocket.getInputStream());
                 String mensajeConfirmacion = dis.readUTF();
                 mibuffer.aumentar();
-                while(mibuffer.dar()<conexiones){
+                while(mibuffer.dar() < conexiones){
                     Thread.yield();
                 }
                 dos.writeInt(buffer.length);
@@ -70,12 +72,13 @@ public class ManejadorCliente implements Runnable {
                     sb.append(String.format("%02x", b));
                 }
                 String hashString = sb.toString();
-                logger.info("SE HA ENVIADO EL ARCHIVO DE HASH: "+hashString);
+                logger.info("Archivo " + nombreArchivo + " enviado correctamente");
+                logger.info("El hash del archivo " + nombreArchivo + " es: " + hashString);
                 dos.writeUTF(hashString);
-                logger.info("--TUVO EXITO LA CONEXION--");
+                logger.info("La conexión tuvo éxito");
                 long tiempoFinal = System.currentTimeMillis();
                 long tiempoTotal = tiempoFinal - tiempoInicio;
-                logger.info("TIEMPO TOTAL DE CONEXION: "+tiempoTotal+" milisegundos");
+                logger.info("Tiempo total de transferencia para el archivo " + nombreArchivo + " a " + clienteSocket.getInetAddress().getHostAddress() + " es " + tiempoTotal + " milisegundos");
             } catch (IOException e) {
                 System.out.println("Error al enviar el archivo: " + e.getMessage());
                 logger.info("--NO TUVO EXITO LA CONEXION--");

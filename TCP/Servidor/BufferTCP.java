@@ -1,6 +1,6 @@
-public class Buffer {
+public class BufferTCP {
     private static int numClientes=0;
-    public Buffer(){
+    public BufferTCP(){
 
     }
     public static synchronized int dar(){
