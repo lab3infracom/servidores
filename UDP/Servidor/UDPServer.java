@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.logging.FileHandler;
 import java.util.logging.Logger;
+import java.net.InetAddress;
 
 public class UDPServer extends Thread{
 
@@ -36,7 +37,8 @@ public class UDPServer extends Thread{
             InetAddress clientAddress = receivePacket.getAddress();
             int clientPort = receivePacket.getPort();
             String clientePrt = clientAddress + ":" + clientPort;
-    
+            String hostname = clientAddress.getHostName();
+            LOGGER.log(java.util.logging.Level.INFO, "[INFO] Conexion del cliente " + hostname + " (" + clientePrt + ")");
             FileInputStream fileInputStream = new FileInputStream(filename);
             int fileSize = fileInputStream.available();
             System.out.println("Enviando archivo " + filename + " (" + fileSize + " bytes) al cliente " + clientePrt);

@@ -61,7 +61,11 @@ public class UDPClient extends Thread {
 
             long tiempoTotal = tiempoFinal - tiempoInicio;
             String nombreArchivo = ""; //TODO: Obtener el nombre del archivo
-            LOGGER.log(java.util.logging.Level.INFO, "[INFO] Cliente " + ID + " Tiempo de recepcion del archivo" +nombreArchivo+ "(" + tamanio + " bytes) fue de " + tiempoTotal + " ms");
+            boolean transferenciaExitosa = true; // Se asume que la transferencia fue exitosa
+            if (tamanio == 0) {
+                transferenciaExitosa = false;
+            }
+            LOGGER.log(java.util.logging.Level.INFO, "[INFO] Cliente " + ID + " Tiempo de recepcion del archivo " + nombreArchivo + " (" + tamanio + " bytes) fue de " + tiempoTotal + " ms. Transferencia exitosa: " + transferenciaExitosa);
             
             fileOutputStream.close();
             clientSocket.close();
