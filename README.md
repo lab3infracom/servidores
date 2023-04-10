@@ -45,8 +45,15 @@
     - `dd if=/dev/zero of=archivo_100Mb.txt bs=1M count=100`
     - `dd if=/dev/zero of=archivo_250Mb.txt bs=1M count=250`
 
+7. Se deben crear los archivos ejecutables de todos los archivos .java con los siguientes comandos:
+    - `javac Buffer.java`
+    - `javac CustomFormatter.java`
+    - `javac UDPServer.java`
+
 6. Se ejecuta el programa ServidorUDP con el comando: 
-    - `java ServidorUDP`
+    - `java UDPServer`
+
+7. Indicar en la terminal el archivo que se quiere enviar: 100 o 250.
 
 ### Cliente UDP
 
