@@ -66,7 +66,7 @@
 
 3. Editar en la linea 14 del archivo UDPClient.java la IP del servidor (la cual se obtuvo previamente en el punto 3 del Servidor UDP).
 
-4. Correr el archivo UDPClient.java en el editor de su preferencia o puede compilarlo con el comando `javac UDPClient.java` y luego ejecutarlo con el comando `java UDPClient`.
+4. Correr el archivo UDPClient.java en el editor de su preferencia y luego ejecutarlo. En caso de que prefiera compilarlo con el comando `javac UDPClient.java`, previo a la ejecución, es necesario eliminar la linea que especifica el paquete en el archivo y luego de compilarlo, si ejecutarlo con el comando `java UDPClient`.
 
 5. Introducir en la terminal el numero de clientes (conexiones simultaneas) que se quiere ejecutar.
 
